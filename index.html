@@ -1,0 +1,1933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smaller teams, bigger partners · Nacar strategy paper</title>
+<meta name="description" content="What is changing in how companies design, what it means, and the opportunities it opens for Nacar.">
+<style>
+/* Nacar Brand Guidelines v0.2: warm white and black frame, one accent (pink), Neue Haas Unica (Arial where not installed),
+   Regular and Medium only, sentence case, doubling scale 12 / 16 / 32 / 64 / 128, 12-column grid. */
+:root {
+  color-scheme: light;
+  --bg: #FFFFFC;          /* warm white */
+  --bg-2: #F6F6F3;
+  --card: #FFFFFC;
+  --ink: #1F1F1F;         /* black */
+  --ink-2: #4A4A47;
+  --muted: #6B6A66;
+  --line: rgba(31,31,31,.16);
+  --line-strong: #1F1F1F;
+  --field: #FB63E7;       /* pink, brand step 400: used as a full field with black text */
+  --on-field: #1F1F1F;
+  --accent: #B417A4;      /* pink 500: data marks, validated on warm white */
+  --accent-soft: #D644C4; /* pink 450: 'before' step */
+  --accent-strong: #88117C; /* pink 600: 'after' step */
+  --gray-mark: #D9D8D3;
+  --grid: #ECEBE7;
+  --black: #1F1F1F;
+  --on-black: #FFFFFC;
+  --on-black-2: #A3A29D;
+  --sans: "Neue Haas Unica", "Neue Haas Unica Pro", "NeueHaasUnica", Arial, Helvetica, sans-serif;
+  --m: clamp(20px, 4.2vw, 64px); /* outer margin: one eighth of the square, scaled */
+  --gap: 24px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --bg: #1F1F1F; --bg-2: #262624; --card: #262624; --ink: #FFFFFC; --ink-2: #D6D5D0; --muted: #A3A29D;
+    --line: rgba(255,255,252,.16); --line-strong: #FFFFFC;
+    --accent: #D644C4; --accent-soft: #B417A4; --accent-strong: #FB63E7;
+    --gray-mark: #4A4A47; --grid: #33332F; --black: #141414;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1F1F1F; --bg-2: #262624; --card: #262624; --ink: #FFFFFC; --ink-2: #D6D5D0; --muted: #A3A29D;
+  --line: rgba(255,255,252,.16); --line-strong: #FFFFFC;
+  --accent: #D644C4; --accent-soft: #B417A4; --accent-strong: #FB63E7;
+  --gray-mark: #4A4A47; --grid: #33332F; --black: #141414;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 400; font-size: 16px; line-height: 20px; letter-spacing: .02em; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+p { margin: 0 0 20px; }
+strong, b { font-weight: 500; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* type scale: 12 / 16 / 32 / 64 / 128, set solid from 32 up */
+.t12 { font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.t32 { font-size: 32px; line-height: 32px; letter-spacing: 0; }
+.t64 { font-size: 64px; line-height: 64px; letter-spacing: -.02em; }
+.t128 { font-size: 128px; line-height: 128px; letter-spacing: -.03em; }
+@media (max-width: 900px) { .t128 { font-size: 64px; line-height: 64px; letter-spacing: -.02em; } }
+@media (max-width: 760px) { .t64 { font-size: 32px; line-height: 32px; letter-spacing: 0; } }
+.muted { color: var(--muted); }
+.medium { font-weight: 500; }
+
+/* 12-column grid, equal margins */
+.wrap { padding: 0 var(--m); max-width: 1600px; margin: 0 auto; }
+.g12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+.c1-3 { grid-column: 1 / 4; } .c1-4 { grid-column: 1 / 5; } .c1-6 { grid-column: 1 / 7; } .c1-12 { grid-column: 1 / -1; }
+.c4-12 { grid-column: 4 / -1; } .c4-10 { grid-column: 4 / 11; } .c5-12 { grid-column: 5 / -1; } .c5-10 { grid-column: 5 / 11; }
+.c7-12 { grid-column: 7 / -1; } .c4-9 { grid-column: 4 / 10; } .c8-12 { grid-column: 8 / -1; }
+@media (max-width: 760px) { .g12 > * { grid-column: 1 / -1 !important; } }
+.prose { max-width: 560px; }
+
+/* ---------- Cover ---------- */
+.cover { background: var(--black); color: var(--on-black); min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.cover .top { display: flex; justify-content: space-between; align-items: flex-start; padding-top: var(--m); gap: 24px; }
+.wordmark { display: inline-block; color: currentColor; }
+.wordmark svg { display: block; width: 100%; height: auto; }
+.cover .wordmark { width: 120px; }
+.cover .top .t12 { color: var(--on-black-2); text-align: right; }
+.cover .body { margin-top: auto; padding-bottom: var(--m); position: relative; z-index: 2; }
+.cover h1 { max-width: 9.5ch; }
+.cover .sub { margin-top: 32px; max-width: 420px; color: var(--on-black); }
+.cover .meta { margin-top: 32px; color: var(--on-black-2); display: flex; gap: 8px 32px; flex-wrap: wrap; }
+/* the square, seen through a translucent layer */
+.square { position: absolute; right: var(--m); top: 18vh; width: min(34vw, 460px); aspect-ratio: 1; z-index: 1;
+  background: conic-gradient(from 210deg at 60% 40%, #FDF1FA, #E3FAFD, #F3F5FD, #FCE6E0, #FDF1FA); }
+.layer-card { position: absolute; right: calc(var(--m) + min(17vw, 230px)); top: calc(18vh + min(20vw, 270px)); width: min(30vw, 400px); z-index: 2;
+  background: rgba(255,255,252,.10); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,252,.22); padding: 24px; color: var(--on-black); }
+.layer-card ol { list-style: none; margin: 12px 0 0; padding: 0; }
+.layer-card li { display: grid; grid-template-columns: 32px 1fr; padding: 10px 0; border-top: 1px solid rgba(255,255,252,.22); }
+.layer-card a { text-decoration: none; }
+@media (max-width: 900px) { .square { width: 46vw; top: 14vh; opacity: .9; } .layer-card { display: none; } }
+@media (max-width: 560px) { .square { width: 52vw; top: 16vh; right: var(--m); } .cover h1 { margin-top: 30vh; } }
+
+/* ---------- Nav ---------- */
+.nav { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 24px; height: 56px; }
+.nav .wordmark { width: 72px; text-decoration: none; padding: 6px 0; }
+.nav ul { list-style: none; display: flex; gap: 4px; margin: 0 0 0 auto; padding: 0; }
+.nav a.link { text-decoration: none; color: var(--muted); padding: 8px 10px; font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.nav a.link[aria-current="true"] { color: var(--ink); box-shadow: inset 0 -1px 0 var(--ink); }
+.btn { background: rgba(31,31,31,.5); color: #FFFFFC; border: 0; height: 32px; padding: 0 12px; font: inherit; font-size: 12px; letter-spacing: .04em; cursor: pointer; }
+:root[data-theme="dark"] .btn { background: rgba(255,255,252,.5); color: #1F1F1F; }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .btn { background: rgba(255,255,252,.5); color: #1F1F1F; } }
+.progress { position: absolute; left: 0; bottom: -1px; height: 1px; width: 0; background: var(--ink); }
+@media (max-width: 860px) { .nav li.hide-sm { display: none; } }
+@media (max-width: 600px) { .nav ul { display: none; } .btn { margin-left: auto; } }
+
+/* ---------- Sections ---------- */
+section.part { padding: 128px 0 32px; }
+.opener { padding-bottom: 64px; border-bottom: 1px solid var(--line-strong); margin-bottom: 64px; }
+.opener .label { color: var(--muted); padding-top: 12px; }
+.opener h2 { max-width: 14ch; }
+.opener .lede { margin-top: 32px; max-width: 520px; font-weight: 500; }
+.block { margin: 0 0 96px; }
+.block-label { color: var(--muted); padding-top: 8px; }
+.block h3 { margin-bottom: 32px; max-width: 18ch; }
+.statement { border-top: 1px solid var(--line-strong); padding-top: 24px; margin: 64px 0 96px; }
+.statement .t12 { color: var(--muted); }
+.statement .t32 { margin-top: 24px; max-width: 26ch; }
+
+/* square tiles */
+.squares { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--gap); margin-top: 32px; }
+.sq { aspect-ratio: 1; border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between; padding: 20px; background: var(--card); }
+.sq .t64 { font-weight: 500; }
+.sq .t12 { color: var(--muted); margin-top: 8px; }
+@media (max-width: 1100px) { .squares { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 480px) { .sq { aspect-ratio: auto; min-height: 220px; } }
+
+/* rule rows (like the brand book's rule lists) */
+.rules { border-top: 1px solid var(--line-strong); }
+.rules .r { display: grid; grid-template-columns: 56px minmax(0,3fr) minmax(0,5fr) minmax(0,3fr); gap: var(--gap); padding: 20px 0; border-bottom: 1px solid var(--line); }
+.rules .r .n { color: var(--muted); }
+.rules .r .title { font-weight: 500; }
+.rules .r p { margin: 0; color: var(--ink-2); }
+.rules .r dl { margin: 0; display: grid; gap: 8px; }
+.rules .r dt { color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.rules .r dd { margin: 0; }
+.rules.two .r { grid-template-columns: 56px minmax(0,4fr) minmax(0,7fr); }
+@media (max-width: 760px) { .rules .r, .rules.two .r { grid-template-columns: 40px minmax(0,1fr); } .rules .r > *:nth-child(n+3) { grid-column: 2; } }
+
+/* black and pink fields */
+.field-black { background: var(--black); color: var(--on-black); padding: 96px 0; margin: 0 0 96px; }
+.field-black .t12, .field-black .muted { color: var(--on-black-2); }
+.field-pink { background: var(--field); color: var(--on-field); padding: 128px 0 96px; margin: 0 0 96px; }
+.field-pink .t12 { color: var(--on-field); }
+.field-pink h3 { max-width: 13ch; }
+.field-pink p { max-width: 560px; }
+
+/* split lists */
+.lists { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.lists > div { border-top: 1px solid var(--line-strong); padding-top: 16px; }
+.lists ul { list-style: none; margin: 16px 0 0; padding: 0; }
+.lists li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+@media (max-width: 760px) { .lists { grid-template-columns: 1fr; } }
+
+/* facts */
+.facts { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: var(--gap); border-top: 1px solid var(--line-strong); padding-top: 20px; margin: 32px 0 64px; }
+.facts .t12 { color: var(--muted); margin-top: 8px; }
+@media (max-width: 900px) { .facts { grid-template-columns: repeat(3, minmax(0,1fr)); row-gap: 32px; } }
+
+/* ---------- Charts ---------- */
+.chart-card { border: 1px solid var(--line); background: var(--card); padding: 24px; }
+.chart-title { font-weight: 500; }
+.chart-sub { color: var(--muted); margin-top: 4px; font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 16px 0 8px; font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.swatch { width: 12px; height: 12px; display: inline-block; }
+.swatch.dot { border-radius: 50%; }
+.chart { position: relative; margin-top: 8px; }
+.chart svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--sans); }
+.chart .axis-label { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.chart .cat-label { fill: var(--ink-2); font-size: 14px; }
+.chart .cat-label.em { fill: var(--ink); font-weight: 500; }
+.chart .val-label { fill: var(--ink); font-size: 13px; font-weight: 500; }
+.chart .gridline { stroke: var(--grid); stroke-width: 1; }
+.chart .hit { fill: transparent; }
+.chart .mark { transition: opacity .15s; }
+.chart g.row:hover .mark, .chart g.row:focus .mark { opacity: .8; }
+.chart g.row:focus { outline: none; }
+.chart g.row:focus .hit { stroke: var(--ink); stroke-width: 1; }
+.tooltip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); padding: 8px 12px; font-size: 12px; line-height: 16px; opacity: 0; transform: translateY(4px); transition: opacity .12s, transform .12s; white-space: nowrap; z-index: 5; }
+.tooltip.show { opacity: 1; transform: none; }
+.tooltip b { display: block; font-size: 16px; line-height: 20px; }
+details.data { margin-top: 12px; }
+details.data summary { cursor: pointer; color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.chart-src { color: var(--muted); margin-top: 12px; font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+
+table.t { width: 100%; border-collapse: collapse; }
+table.t th, table.t td { text-align: left; padding: 12px 12px 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.t th { color: var(--muted); font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+table.t td.num { font-variant-numeric: tabular-nums; }
+.table-wrap { overflow-x: auto; border-top: 1px solid var(--line-strong); }
+table.t td:first-child { font-weight: 500; }
+
+/* tabs */
+.tablist { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--line); margin: 32px 0 24px; }
+.tablist button { background: none; border: 0; color: var(--muted); font: inherit; padding: 12px 16px 12px 0; margin-right: 16px; cursor: pointer; box-shadow: inset 0 -1px 0 transparent; }
+.tablist button[aria-selected="true"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink); }
+.tabpanel { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.tabpanel[hidden] { display: none; }
+.tabpanel > div { border-top: 1px solid var(--line-strong); padding-top: 16px; }
+.tabpanel > div .t12 { color: var(--muted); margin-bottom: 12px; }
+@media (max-width: 760px) { .tabpanel { grid-template-columns: 1fr; } }
+
+/* offers: + grows into a square panel in the accent colour */
+.offers { border-top: 1px solid var(--line-strong); }
+details.offer { border-bottom: 1px solid var(--line); }
+details.offer summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 56px minmax(0,1fr) 40px; gap: var(--gap); align-items: start; padding: 24px 0; }
+details.offer summary::-webkit-details-marker { display: none; }
+details.offer .o-num { color: var(--muted); padding-top: 8px; }
+details.offer .o-title { font-size: 32px; line-height: 32px; font-weight: 500; }
+details.offer .o-moment { color: var(--ink-2); margin-top: 12px; max-width: 640px; }
+details.offer .chev { width: 32px; height: 32px; border: 1px solid var(--line-strong); display: grid; place-items: center; transition: width .25s, height .25s, background .25s; }
+details.offer .chev::before { content: "+"; font-size: 20px; line-height: 20px; }
+details.offer[open] .chev { width: 40px; height: 40px; background: var(--field); border-color: var(--field); color: #1F1F1F; }
+details.offer[open] .chev::before { content: "–"; }
+.o-body { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--gap); margin: 0 64px 32px 80px; }
+.o-body > div { border-top: 1px solid var(--line); padding-top: 12px; }
+.o-body .lab { color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; margin-bottom: 8px; }
+.o-body p { margin: 0; color: var(--ink-2); }
+@media (max-width: 1000px) { .o-body { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .o-body { grid-template-columns: 1fr; margin: 0 0 24px 0; } details.offer summary { grid-template-columns: 32px minmax(0,1fr) 40px; } details.offer .o-title { font-size: 20px; line-height: 24px; } }
+
+/* method: think, make, prove, stay */
+.method { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--gap); border-top: 1px solid var(--line-strong); }
+.method > div { padding-top: 20px; }
+.method .t32 { margin-bottom: 16px; }
+.method .t12 { color: var(--muted); margin-top: 16px; }
+.method p { margin: 4px 0 0; color: var(--ink-2); }
+@media (max-width: 900px) { .method { grid-template-columns: 1fr 1fr; row-gap: 40px; } }
+@media (max-width: 560px) { .method { grid-template-columns: 1fr; } }
+
+/* tiers */
+.tiers { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--gap); }
+.tier { border: 1px solid var(--line); padding: 24px; background: var(--card); }
+.tier.featured { background: var(--black); color: var(--on-black); border-color: var(--black); }
+.tier.featured .muted, .tier.featured li.off { color: var(--on-black-2); }
+.tier ul { list-style: none; margin: 24px 0 0; padding: 0; }
+.tier li { padding: 10px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 20px 1fr; gap: 8px; }
+.tier.featured li { border-top-color: rgba(255,255,252,.18); }
+.tier li.off { color: var(--muted); }
+@media (max-width: 900px) { .tiers { grid-template-columns: 1fr; } }
+
+/* layers */
+.layers { position: relative; margin-top: 32px; }
+.layer-a { background: var(--black); color: var(--on-black); padding: 32px 32px 96px; }
+.layer-a .t12, .layer-b .t12 { color: var(--on-black-2); }
+.layer-b { position: relative; margin: -64px 0 0 25%; padding: 32px; background: rgba(255,255,252,.72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid var(--line); color: var(--ink); }
+.layer-b .t12 { color: var(--muted); }
+:root[data-theme="dark"] .layer-b { background: rgba(38,38,36,.78); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .layer-b { background: rgba(38,38,36,.78); } }
+.layer-a h4, .layer-b h4 { font-size: 32px; line-height: 32px; margin: 12px 0 16px; }
+.layer-a p, .layer-b p { margin: 0; max-width: 560px; }
+@media (max-width: 760px) { .layer-b { margin-left: 8%; } }
+
+/* closing */
+.closing { background: var(--black); color: var(--on-black); padding: 128px 0; }
+.closing .t12 { color: var(--on-black-2); }
+.closing .t64 { max-width: 20ch; margin-top: 24px; }
+.closing .after { margin-top: 64px; }
+footer { padding: 64px 0 96px; color: var(--muted); }
+footer h3 { color: var(--ink); margin-bottom: 24px; }
+footer ul { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: var(--gap); }
+footer li { padding: 8px 0; border-top: 1px solid var(--line); break-inside: avoid; }
+footer a { color: var(--ink-2); }
+.colophon { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line-strong); }
+@media (max-width: 760px) { footer ul { columns: 1; } }
+
+/* motion */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+@media print { .nav, .btn { display: none; } .reveal { opacity: 1; transform: none; } .cover { min-height: auto; } }
+
+/* ---------- v0.7 additions: outside-in story ---------- */
+/* the paper in three minutes */
+.brief { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--gap); border-top: 1px solid var(--line-strong); }
+.brief > div { padding-top: 20px; }
+.brief .n { color: var(--muted); }
+.brief .t32 { margin: 16px 0 16px; }
+.brief p { color: var(--ink-2); margin: 0; }
+@media (max-width: 900px) { .brief { grid-template-columns: 1fr; row-gap: 40px; } }
+
+/* forces overview */
+.rules.forces .r { grid-template-columns: 56px minmax(0,4fr) minmax(0,6fr) 88px; align-items: start; }
+.rules.forces .r a { text-decoration: none; }
+.rules.forces .r .go { color: var(--muted); text-align: right; }
+.rules.forces .r:hover .go { color: var(--ink); }
+
+/* what it means */
+.insight { border-top: 1px solid var(--line-strong); padding-top: 16px; margin-top: 40px; max-width: 760px; }
+.insight .t12 { color: var(--muted); margin-bottom: 12px; }
+.insight p { font-size: 32px; line-height: 32px; margin: 0; }
+@media (max-width: 760px) { .insight p { font-size: 20px; line-height: 24px; } }
+
+/* timeline */
+.rules.tl .r { grid-template-columns: 150px minmax(0,4fr) minmax(0,6fr); }
+.rules.tl .r .date { font-weight: 500; }
+@media (max-width: 760px) { .rules.tl .r { grid-template-columns: 1fr; row-gap: 6px; } .rules.tl .r > * { grid-column: 1 !important; } }
+
+/* tags */
+.tag { display: inline-block; border: 1px solid var(--line-strong); padding: 2px 6px; font-size: 12px; line-height: 16px; letter-spacing: .04em; margin: 0 4px 4px 0; white-space: nowrap; }
+
+/* the bridge: force → need → pillar → offers */
+.bridge { border-top: 1px solid var(--line-strong); margin-top: 32px; }
+.bridge .bh, .bridge .br { display: grid; grid-template-columns: minmax(0,3fr) 20px minmax(0,3fr) 20px minmax(0,4fr) minmax(0,3fr); column-gap: 16px; align-items: start; }
+.bridge .bh { padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.bridge .br { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.bridge .force .n { color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; display: block; margin-bottom: 6px; }
+.bridge .force .f { font-weight: 500; }
+.bridge .arrow { color: var(--muted); }
+.bridge .need { color: var(--ink-2); }
+.bridge .pillar { font-size: 32px; line-height: 32px; display: flex; align-items: center; gap: 12px; }
+.bridge .pillar i { width: 12px; height: 12px; background: var(--field); display: inline-block; flex: none; }
+.bridge .pillar-d { color: var(--ink-2); margin: 10px 0 0; }
+.bridge .offers-l { font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-2); }
+.bridge .lab-sm { display: none; }
+@media (max-width: 900px) {
+  .bridge .bh { display: none; }
+  .bridge .br { grid-template-columns: 1fr; row-gap: 12px; }
+  .bridge .arrow { display: none; }
+  .bridge .lab-sm { display: block; color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; margin-bottom: 4px; }
+}
+
+/* asks */
+.asks { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--gap); margin-top: 32px; }
+.ask { background: var(--black); color: var(--on-black); padding: 24px; display: flex; flex-direction: column; min-height: 260px; }
+.ask .t12 { color: var(--on-black-2); }
+.ask .t32 { margin: 16px 0; }
+.ask p { margin: auto 0 0; color: var(--on-black); }
+@media (max-width: 900px) { .asks { grid-template-columns: 1fr; } .ask { min-height: 0; } .ask p { margin-top: 0; } }
+
+/* presenter hint */
+.nav .hint { color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; white-space: nowrap; }
+@media (max-width: 1180px) { .nav .hint { display: none; } }
+[data-beat] { scroll-margin-top: 80px; }
+
+/* fixes carried over from the v0.6 review */
+.cover > .wrap { width: 100%; }
+.layer-card { background: rgba(31,31,31,.72); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); }
+.layer-b, :root[data-theme="dark"] .layer-b { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; border: 1px solid var(--line-strong); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .layer-b { background: var(--bg); } }
+.rules.forces a.r { text-decoration: none; color: inherit; }
+.rules.forces a.r .title { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+.rules.forces a.r:hover .title { text-decoration-color: var(--ink); }
+@media (max-width: 760px) { .rules.forces .r { grid-template-columns: 40px minmax(0,1fr); } .rules.forces .r .go { display: none; } }
+
+/* ---------- v0.8 additions: precise structure ---------- */
+/* proof rows: number | statement | source */
+.proof { border-top: 1px solid var(--line-strong); margin-top: 24px; }
+.proof .p { display: grid; grid-template-columns: 180px minmax(0,1fr) minmax(0,220px); gap: var(--gap); padding: 16px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.proof .num { font-size: 32px; line-height: 32px; font-variant-numeric: tabular-nums; }
+.proof .src { color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.proof .lab { color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; padding: 12px 0 0; }
+@media (max-width: 760px) { .proof .p { grid-template-columns: 1fr; row-gap: 6px; } }
+.happening { max-width: 640px; }
+.happening .t12 { color: var(--muted); margin-bottom: 8px; }
+
+/* consequences: n | consequence | because | possibility */
+.rules.conseq .r { grid-template-columns: 56px minmax(0,5fr) minmax(0,2fr) minmax(0,4fr); }
+.rules.conseq .r .title { margin-bottom: 8px; }
+.rules.conseq .r .poss { border-left: 2px solid var(--field); padding-left: 16px; }
+.rules.conseq .r dt { margin-bottom: 4px; }
+@media (max-width: 760px) { .rules.conseq .r { grid-template-columns: 40px minmax(0,1fr); } .rules.conseq .r > *:nth-child(n+3) { grid-column: 2; } }
+
+/* opportunities */
+.opp { border-top: 1px solid var(--line-strong); padding-top: 24px; }
+.opp .head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: var(--gap); align-items: start; margin-bottom: 32px; }
+.opp .head .t12 { color: var(--muted); }
+.opp .head h3 { margin: 12px 0 0; }
+.opp .tagline { color: var(--ink-2); margin-top: 12px; max-width: 640px; }
+.opp .cols { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--gap); }
+.opp .cols > div { border-top: 1px solid var(--line); padding-top: 16px; }
+.opp .cols .t12 { color: var(--muted); margin-bottom: 12px; }
+.opp .cols p { margin: 0 0 12px; }
+.opp .for { color: var(--ink-2); font-size: 12px; line-height: 16px; letter-spacing: .04em; }
+.opp ul.offer-list { list-style: none; margin: 0; padding: 0; }
+.opp ul.offer-list li { display: grid; grid-template-columns: 20px 1fr; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.opp ul.offer-list li::before { content: "+"; color: var(--muted); }
+.opp .facts4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--gap); margin-top: 32px; }
+.opp .facts4 > div { background: var(--bg-2); padding: 16px; }
+.opp .facts4 .t12 { color: var(--muted); margin-bottom: 8px; }
+.opp .facts4 p { margin: 0; color: var(--ink-2); }
+:root[data-theme="dark"] .opp .facts4 > div { background: var(--card); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .opp .facts4 > div { background: var(--card); } }
+@media (max-width: 1000px) { .opp .facts4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) { .opp .cols, .opp .facts4 { grid-template-columns: 1fr; } .opp .head { grid-template-columns: 1fr; } }
+
+/* ---------- v0.9 additions ---------- */
+.note { background: var(--bg-2); padding: 24px; margin-top: 32px; max-width: 820px; }
+.note .t12 { color: var(--muted); margin-bottom: 12px; }
+.note p { margin: 0 0 12px; }
+:root[data-theme="dark"] .note { background: var(--card); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .note { background: var(--card); } }
+.todo { border: 1px dashed var(--line-strong); padding: 12px 16px; margin: 24px 0 0; font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-2); max-width: 820px; }
+.todo b { font-weight: 500; color: var(--ink); }
+.users { margin-top: 24px; border-left: 2px solid var(--field); padding-left: 16px; max-width: 760px; }
+.users .t12 { color: var(--muted); margin-bottom: 6px; }
+.users p { margin: 0; }
+.ready { background: var(--black); color: var(--on-black); padding: 24px; margin-top: 32px; }
+.ready .t12 { color: var(--on-black-2); }
+.ready ol { list-style: none; margin: 16px 0 0; padding: 0; }
+.ready li { display: grid; grid-template-columns: 40px 1fr; padding: 12px 0; border-top: 1px solid rgba(255,255,252,.18); }
+.ready li > span:first-child { color: var(--on-black-2); }
+.stages { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--gap); }
+.stages > div { border-top: 1px solid var(--line-strong); padding-top: 16px; }
+.stages .t32 { margin-bottom: 12px; }
+.stages p { margin: 0; color: var(--ink-2); }
+@media (max-width: 760px) { .stages { grid-template-columns: 1fr; row-gap: 24px; } }
+.opp .head .t12 .tag { vertical-align: middle; }
+
+/* ---------- v1.0: opportunity cards and appendix details ---------- */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--gap); margin-top: 32px; }
+.card { background: var(--bg-2); padding: 28px; display: flex; flex-direction: column; }
+:root[data-theme="dark"] .card { background: var(--card); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .card { background: var(--card); } }
+.card .num { color: var(--muted); }
+.card h4 { font-size: 32px; line-height: 32px; font-weight: 400; margin: 12px 0 8px; }
+.card .part { margin-top: 20px; }
+.card .part .t12 { color: var(--muted); margin-bottom: 6px; }
+.card .part p { margin: 0; }
+.card .start { margin-top: auto; padding-top: 24px; color: var(--ink-2); }
+.card .start::before { content: ""; display: block; border-top: 1px solid var(--line); margin-bottom: 12px; }
+@media (max-width: 900px) { .cards { grid-template-columns: 1fr; } .card h4 { font-size: 24px; line-height: 28px; } }
+.detail { border-top: 1px solid var(--line-strong); padding: 20px 0 40px; }
+.detail h4 { font-size: 32px; line-height: 32px; font-weight: 400; margin: 0 0 20px; }
+.detail dl { display: grid; grid-template-columns: 160px minmax(0,1fr); gap: 10px 24px; margin: 0; max-width: 900px; }
+.detail dt { color: var(--muted); font-size: 12px; line-height: 20px; letter-spacing: .04em; }
+.detail dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 760px) { .detail dl { grid-template-columns: 1fr; gap: 2px; } .detail dd { margin-bottom: 10px; } }
+.block-label br + * { display: inline; }
+
+/* v1.1 */
+.card .users-part { border-left: 2px solid var(--field); padding-left: 12px; }
+
+/* ---------- v1.2 visuals ---------- */
+:root { --pink-tint: #FCE2F6; }
+:root[data-theme="dark"] { --pink-tint: #42093B; }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) { --pink-tint: #42093B; } }
+
+/* before / now team illustration */
+.teamviz { display: grid; grid-template-columns: auto 48px auto 1fr; gap: 24px; align-items: center; margin: 40px 0 8px; padding: 32px; background: var(--bg-2); }
+:root[data-theme="dark"] .teamviz { background: var(--card); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .teamviz { background: var(--card); } }
+.tv-col .t12.muted { margin-bottom: 12px; }
+.tv-grid { display: grid; grid-template-columns: repeat(5, 28px); gap: 6px; }
+.tv-grid i { width: 28px; height: 28px; display: block; }
+.tv-grid .sq-o { border: 1px solid var(--ink); }
+.tv-grid .sq-f { background: var(--ink); }
+.tv-grid .sq-gap { visibility: hidden; }
+.tv-grid .sq-p { background: var(--field); color: #1F1F1F; font-style: normal; text-align: center; line-height: 28px; font-size: 20px; }
+.tv-col p { margin: 12px 0 0; max-width: 220px; color: var(--ink-2); }
+.tv-arrow { font-size: 32px; color: var(--muted); text-align: center; }
+.tv-note { align-self: end; justify-self: end; }
+@media (max-width: 760px) { .teamviz { grid-template-columns: 1fr; } .tv-arrow { transform: rotate(90deg); justify-self: start; } .tv-note { justify-self: start; } }
+
+/* force tiles */
+.ftiles { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; margin-top: 40px; }
+.ft { display: flex; flex-direction: column; gap: 8px; padding: 20px; border-top: 2px solid var(--ink); background: var(--bg-2); text-decoration: none; color: inherit; min-height: 300px; }
+:root[data-theme="dark"] .ft { background: var(--card); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .ft { background: var(--card); } }
+.ft .ft-t { font-weight: 500; min-height: 40px; }
+.ft .ft-n { font-size: 64px; line-height: 64px; letter-spacing: -.02em; margin-top: auto; }
+.ft .ft-l { color: var(--ink-2); }
+.ft .go { color: var(--muted); }
+.ft:hover { border-top-color: var(--field); }
+.ft:hover .go { color: var(--ink); }
+@media (max-width: 1200px) { .ftiles { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (max-width: 760px) { .ftiles { grid-template-columns: 1fr 1fr; } .ft { min-height: 0; } .ft .ft-n { font-size: 40px; line-height: 40px; } }
+@media (max-width: 480px) { .ftiles { grid-template-columns: 1fr; } }
+
+.proof .who { color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .04em; padding: 4px 0 4px; }
+
+/* year lanes */
+.years { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: var(--gap); margin-top: 32px; border-top: 1px solid var(--line-strong); }
+.yr { padding-top: 16px; }
+.yr-h { margin-bottom: 16px; }
+.ev { position: relative; padding: 0 0 16px 20px; border-left: 1px solid var(--line); margin-left: 5px; }
+.ev::before { content: ""; position: absolute; left: -6px; top: 2px; width: 11px; height: 11px; background: var(--ink); }
+.ev p { margin: 4px 0 0; color: var(--ink-2); font-size: 14px; line-height: 18px; }
+.yr:nth-child(2) { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gap); align-content: start; }
+.yr:nth-child(2) .yr-h { grid-column: 1 / -1; }
+.here { grid-column: 1 / -1; background: var(--field); color: #1F1F1F; padding: 8px 12px; justify-self: start; margin-top: 4px; }
+@media (max-width: 900px) { .years { grid-template-columns: 1fr; } .yr:nth-child(2) { grid-template-columns: 1fr; } }
+
+/* flow diagram */
+.flow { width: 100%; height: auto; display: block; }
+.flow text { font-family: var(--sans); font-size: 14px; fill: var(--ink); }
+.flow .hd { font-size: 12px; fill: var(--muted); letter-spacing: .04em; }
+.flow .num { fill: var(--muted); }
+.flow .fbox { fill: var(--bg-2); }
+.flow .cbox { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1; }
+.flow .nbox { fill: var(--black); }
+.flow .nbox.sell { fill: var(--field); }
+.flow .nt { font-size: 18px; font-weight: 500; fill: var(--on-black); }
+.flow .no { font-size: 13px; fill: var(--on-black-2); }
+.flow .nbox.sell + .nt, .flow .nbox.sell + .nt + .no { fill: #1F1F1F; }
+.flow .link { fill: none; stroke-width: 1.5; }
+.flow .link.a { stroke: var(--gray-mark); }
+.flow .link.b { stroke: var(--accent); }
+:root[data-theme="dark"] .flow .fbox { fill: var(--card); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .flow .fbox { fill: var(--card); } }
+.flow-list { display: none; border-top: 1px solid var(--line-strong); }
+.flow-list > div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.flow-list p { margin: 4px 0 0; }
+@media (max-width: 760px) { .flow { display: none; } .flow-list { display: block; } }
+
+/* dot matrix */
+.dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--ink); vertical-align: -2px; box-sizing: border-box; }
+.dot.full { background: var(--ink); }
+.dot.half { background: linear-gradient(90deg, var(--ink) 50%, transparent 50%); }
+.legend .dot { margin-right: 4px; }
+table.t th.c, table.t td.c { text-align: center; padding-right: 0; }
+table.matrix tr.us td { background: var(--pink-tint); font-weight: 500; }
+table.matrix td:first-child { white-space: nowrap; padding-left: 8px; }
+table.matrix th:first-child { padding-left: 8px; }
+
+/* 90-day plan */
+.plan { border-top: 1px solid var(--line-strong); padding-top: 8px; }
+.pl-row { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 16px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.pl-head { border-bottom: 0; }
+.pl-label { font-size: 14px; line-height: 18px; }
+.pl-track { display: grid; grid-template-columns: repeat(13, minmax(0,1fr)); gap: 2px; min-height: 24px; align-items: center; }
+.pl-track .wk { font-size: 12px; color: var(--muted); text-align: center; }
+.bar { height: 24px; display: flex; align-items: center; padding: 0 8px; font-size: 12px; letter-spacing: .04em; white-space: nowrap; overflow: hidden; }
+.bar.acc { background: var(--accent); color: #FFFFFC; }
+.bar.ink { background: var(--ink); color: var(--bg); }
+.bar.grey { background: var(--gray-mark); color: var(--ink); }
+.bar.line { border: 1px dashed var(--ink); color: var(--ink); }
+.mark { height: 24px; width: 24px; background: var(--field); justify-self: center; }
+@media (max-width: 760px) { .pl-row { grid-template-columns: 1fr; gap: 4px; } .pl-head > div:first-child { display: none; } }
+
+/* stages share bars */
+.share { display: flex; height: 12px; margin: 4px 0 12px; gap: 2px; }
+.share .sn { background: var(--accent); }
+.share .sc { background: var(--ink); }
+
+/* interview units */
+.units { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: var(--gap); border-top: 1px solid var(--line-strong); padding-top: 16px; }
+.ug-sq { display: flex; flex-wrap: wrap; gap: 4px; min-height: 24px; margin-bottom: 12px; }
+.ug-sq i { width: 20px; height: 20px; background: var(--ink); display: block; }
+.ug .t32 { margin-bottom: 4px; }
+.ug p { margin: 6px 0 0; color: var(--ink-2); }
+@media (max-width: 900px) { .units { grid-template-columns: 1fr 1fr; row-gap: 24px; } }
+.tv-grid.tv-now { display: flex; gap: 6px; }
+.tv-grid.tv-now .sq-gap { visibility: visible; width: 16px; }
+table.matrix { min-width: 680px; }
+table.matrix th.c { padding: 12px 6px; }
+
+/* ---------- v1.3 visuals ---------- */
+/* prologue pips */
+.pips { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+.pips .sqs { display: flex; gap: 4px; align-items: center; }
+.pips .sqs i { width: 16px; height: 16px; background: var(--ink); display: block; }
+.pips .sqs i.p { background: var(--field); }
+.pips .sqs b { width: 6px; display: block; }
+.pips .t12 { color: var(--muted); }
+
+/* direction of travel */
+.dirs { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; }
+.dir { display: flex; flex-direction: column; gap: 16px; padding: 20px 16px; background: var(--bg-2); border-top: 2px solid var(--ink); text-decoration: none; color: inherit; }
+.dir:hover { border-top-color: var(--field); }
+.dv { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 8px; align-items: start; }
+.dv .ar { font-size: 32px; line-height: 28px; }
+.dv .ar.up { color: var(--accent); }
+.dv .ar.down { color: var(--ink); }
+.dv .ar.flat { color: var(--muted); }
+.dv .t12 { margin-top: 4px; }
+@media (max-width: 1100px) { .dirs { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (max-width: 640px) { .dirs { grid-template-columns: 1fr; } }
+
+/* meters */
+.mbar { position: relative; display: block; height: 8px; background: var(--gray-mark); }
+.mbar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); }
+.mbar b { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--ink); }
+.meters { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--gap); margin: 24px 0 28px; max-width: 640px; }
+.meters .mt .t32 { margin: 0 0 12px; max-width: none; }
+.meters .mt .t12 { color: var(--ink-2); margin-top: 10px; }
+@media (max-width: 560px) { .meters { grid-template-columns: 1fr; } }
+.minis { margin-top: 16px; display: grid; gap: 10px; max-width: 460px; }
+.mn { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr) 96px; gap: 12px; align-items: center; }
+.mn .v { color: var(--ink-2); }
+.minis > .t12 { margin-top: 2px; }
+
+/* pictograms */
+.pic, .osch { display: block; overflow: visible; }
+.pic { width: 120px; height: 80px; }
+.pic .s, .osch .s { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.pic .f, .osch .f { fill: var(--ink); }
+.pic .p, .osch .p { fill: var(--field); }
+.pic .d, .osch .d { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.pic .m, .osch .m { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.osch text { font-family: var(--sans); font-size: 12px; letter-spacing: .02em; fill: var(--ink-2); }
+.osch text.tm { fill: var(--muted); }
+.osch text.tk { fill: #1F1F1F; }
+
+/* consequence tiles */
+.ctiles { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin: 32px 0 56px; }
+.ct { display: flex; flex-direction: column; gap: 8px; padding: 20px; background: var(--bg-2); border-top: 2px solid var(--ink); text-decoration: none; color: inherit; min-height: 236px; }
+.ct .pic { margin-bottom: 12px; }
+.ct .ct-t { font-weight: 500; }
+.ct .fchips { display: flex; gap: 3px; margin-top: auto; }
+.ct .fchips i { width: 12px; height: 12px; border: 1px solid var(--ink); display: block; }
+.ct .fchips i.on { background: var(--ink); }
+a.ct:hover { border-top-color: var(--field); }
+.ct-note { background: var(--field); color: #1F1F1F; border-top-color: #1F1F1F; }
+.ct-note .ct-t { font-weight: 400; }
+@media (max-width: 1100px) { .ctiles { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 480px) { .ctiles { grid-template-columns: 1fr; } .ct { min-height: 0; } }
+
+/* offer schematics */
+.osch { width: 100%; max-width: 360px; height: auto; margin: 20px 0 4px; }
+
+/* spectrum */
+.spectrum { border-top: 1px solid var(--line-strong); padding-top: 16px; }
+.sp-ends { display: flex; justify-content: space-between; gap: 24px; color: var(--ink-2); margin-bottom: 8px; }
+.sp-ends span:last-child { text-align: right; }
+.sp-bar, .sp-cols { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 4px var(--gap); }
+.sp-bar { gap: 2px; }
+.sp-bar i { height: 20px; display: block; }
+.sp-bar .a { border: 1px solid var(--ink); background: repeating-linear-gradient(135deg, var(--ink) 0 1.5px, transparent 1.5px 7px); }
+.sp-bar .b { background: var(--gray-mark); }
+.sp-bar .c { background: var(--ink); }
+.sp-move { position: relative; margin: 12px 0 20px; padding-bottom: 12px; color: var(--ink); }
+.sp-move::after { content: ""; position: absolute; left: 0; right: 10px; bottom: 4px; height: 2px; background: var(--accent); }
+.sp-move::before { content: ""; position: absolute; right: 0; bottom: 0; border-left: 10px solid var(--accent); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.sp-cols ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.sp-cols li { font-weight: 500; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.sp-cols p { margin: 8px 0 0; color: var(--ink-2); }
+@media (max-width: 760px) { .sp-cols { grid-template-columns: 1fr; row-gap: 24px; } .sp-ends { font-size: 11px; } }
+
+/* stop -> instead */
+.swap { border-top: 1px solid var(--line-strong); }
+.sw { display: grid; grid-template-columns: minmax(0,4fr) 40px minmax(0,7fr); gap: var(--gap); padding: 20px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.sw-h { color: var(--muted); padding: 12px 0; }
+.sw-from { color: var(--muted); }
+.sw-from s { text-decoration-thickness: 1.5px; }
+.sw-ar { font-size: 24px; line-height: 20px; color: var(--accent); }
+.sw-to { border-left: 2px solid var(--field); padding-left: 16px; }
+.sw-to p { margin: 6px 0 0; color: var(--ink-2); }
+@media (max-width: 760px) { .sw { grid-template-columns: 1fr; row-gap: 8px; } .sw-ar { transform: rotate(90deg); width: 20px; } .sw-h { display: none; } }
+
+/* chips */
+.chip { display: inline-block; padding: 6px 10px; font-size: 12px; line-height: 16px; letter-spacing: .04em; border: 1px solid var(--ink); color: var(--ink); background: transparent; }
+.chip.start { background: var(--field); border-color: var(--field); color: #1F1F1F; }
+.chip.rec { background: var(--ink); color: var(--bg); }
+
+/* how each offer starts and grows */
+.grow { border-top: 1px solid var(--line-strong); }
+.gr { display: grid; grid-template-columns: minmax(0,4fr) minmax(0,4fr) 32px minmax(0,5fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.gr-h { color: var(--muted); padding: 10px 0; }
+.gr-o { font-weight: 500; }
+.gr-ar { color: var(--muted); font-size: 20px; }
+.gr-to { display: flex; flex-wrap: wrap; gap: 6px; }
+.legend .swatch { box-sizing: border-box; }
+@media (max-width: 760px) { .gr { grid-template-columns: 1fr; gap: 8px; } .gr-h, .gr-ar { display: none; } }
+
+/* hub */
+.hub-h { margin: 32px 0 12px; }
+.hub { display: grid; grid-template-columns: minmax(0,1fr) 240px minmax(0,1fr); gap: 40px; align-items: center; }
+.hub-side { display: grid; gap: 12px; }
+.hn { position: relative; background: var(--bg-2); border-top: 1px solid var(--ink); padding: 12px 14px; }
+.hn .t12 { margin-bottom: 4px; }
+.hub-side.l .hn::after, .hub-side.r .hn::after { content: ""; position: absolute; top: 50%; width: 40px; height: 2px; background: var(--accent); }
+.hub-side.l .hn::after { right: -40px; }
+.hub-side.r .hn::after { left: -40px; }
+.hub-core { aspect-ratio: 1; background: var(--black); color: var(--on-black); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.hub-core .t12 { color: var(--on-black-2); }
+.hub-core .t32 { font-size: 28px; line-height: 30px; }
+@media (max-width: 900px) { .hub { grid-template-columns: 1fr; gap: 12px; } .hub-core { aspect-ratio: auto; min-height: 180px; order: -1; } .hub-side .hn::after { display: none; } }
+:root[data-theme="dark"] .hn, :root[data-theme="dark"] .dir, :root[data-theme="dark"] .ct:not(.ct-note), :root[data-theme="dark"] .q-cell, :root[data-theme="dark"] .pa, :root[data-theme="dark"] .lp:not(.gate) { background: var(--card); }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) :is(.hn, .dir, .ct:not(.ct-note), .q-cell, .pa, .lp:not(.gate)) { background: var(--card); } }
+:root[data-theme="dark"] .hub-core { border: 1px solid var(--line); }
+
+/* AI-ready layers */
+.ready li { grid-template-columns: 36px 40px 1fr; align-items: start; }
+.ready .lv { display: flex; flex-direction: column-reverse; gap: 2px; padding-top: 3px; }
+.ready .lv i { width: 24px; height: 4px; background: rgba(255,255,252,.24); display: block; }
+.ready .lv i.on { background: var(--field); }
+.ready .rm { display: grid; gap: 6px; margin-top: 12px; max-width: 360px; }
+.ready .rm-r { display: grid; grid-template-columns: 110px minmax(0,1fr) 36px; gap: 10px; align-items: center; font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--on-black-2); }
+.ready .mbar { background: rgba(255,255,252,.18); }
+.ready .mbar i { background: var(--field); }
+.ready .mbar i.w { background: var(--on-black); }
+
+/* 2 x 2 */
+.quad { display: grid; grid-template-columns: 140px minmax(0,1fr) minmax(0,1fr); gap: 12px; }
+.q-col { color: var(--muted); border-bottom: 1px solid var(--line-strong); padding-bottom: 8px; align-self: end; }
+.q-row { color: var(--muted); border-right: 1px solid var(--line-strong); padding-right: 12px; align-self: stretch; display: flex; align-items: center; }
+.q-cell { background: var(--bg-2); padding: 20px; min-height: 170px; }
+.q-cell .t32 { margin-bottom: 12px; }
+.q-cell p { margin: 0; color: var(--ink-2); }
+.q-cell.hl { background: var(--pink-tint) !important; }
+.q-tag { display: none; margin-bottom: 8px; }
+@media (max-width: 760px) { .quad { grid-template-columns: 1fr; } .q-corner, .q-col, .q-row { display: none; } .q-tag { display: block; } .q-cell { min-height: 0; } }
+
+/* bench week */
+.week { border-top: 1px solid var(--line-strong); padding-top: 12px; }
+.wk-l { margin-bottom: 8px; }
+.wk-days { display: grid; grid-template-columns: 4fr 1fr; gap: 2px; }
+.wk-days > div { height: 64px; padding: 10px 12px; display: flex; flex-direction: column; justify-content: space-between; }
+.wk-a { border: 1px solid var(--ink); }
+.wk-b { background: var(--field); color: #1F1F1F; }
+.wk-if { text-align: right; margin: 10px 0 8px; }
+.wk-to { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.wk-peak { margin-top: 16px; display: flex; gap: 8px; align-items: center; }
+@media (max-width: 560px) { .wk-days { grid-template-columns: 3fr 2fr; } .wk-if { text-align: left; } .wk-to { justify-content: flex-start; } }
+
+/* growth paths */
+.paths { display: grid; grid-template-columns: 200px minmax(0,1fr); column-gap: 48px; align-items: center; }
+.pa-root { position: relative; background: var(--black); color: var(--on-black); padding: 16px; }
+.pa-root .t12 { color: var(--on-black-2); margin-bottom: 8px; }
+.pa-root::after { content: ""; position: absolute; top: 50%; right: -48px; width: 48px; height: 1px; background: var(--ink); }
+.pa-list { position: relative; display: grid; gap: 10px; padding-left: 24px; }
+.pa-list::before { content: ""; position: absolute; left: 0; top: 30px; bottom: 30px; width: 1px; background: var(--ink); }
+.pa { position: relative; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; background: var(--bg-2); padding: 12px 14px; }
+.pa::before { content: ""; position: absolute; left: -24px; top: 50%; width: 24px; height: 1px; background: var(--ink); }
+.pa p { margin: 4px 0 0; color: var(--ink-2); }
+:root[data-theme="dark"] .pa-root { border: 1px solid var(--line); }
+@media (max-width: 760px) { .paths { grid-template-columns: 1fr; row-gap: 24px; } .pa-root::after { display: none; } .pa { grid-template-columns: 1fr; } .pa .chip { justify-self: start; } }
+
+/* AI loop */
+.loop { display: grid; grid-template-columns: minmax(0,1fr) 32px minmax(0,1fr) 32px minmax(0,1fr); align-items: stretch; row-gap: 8px; }
+.lp { background: var(--bg-2); padding: 16px; }
+.lp .medium { margin: 8px 0 6px; }
+.lp p { margin: 0; color: var(--ink-2); }
+.lp.gate { background: var(--field); color: #1F1F1F; }
+.lp.gate p { color: #1F1F1F; }
+.lp-ar { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 20px; }
+.lp-base { grid-column: 1 / -1; border: 1px dashed var(--ink); padding: 10px 14px; color: var(--ink-2); }
+@media (max-width: 760px) { .loop { grid-template-columns: 1fr; } .lp-ar { transform: rotate(90deg); height: 24px; } }
+
+/* go / change / drop */
+.thr { margin-top: 24px; max-width: 820px; }
+.th-row { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 16px; align-items: center; padding: 18px 0 6px; }
+.th-track { position: relative; height: 16px; background: var(--gray-mark); }
+.th-zone { position: absolute; top: 0; bottom: 0; right: 0; background: var(--accent); display: flex; align-items: center; padding-left: 8px; }
+.th-zone .t12 { color: #FFFFFC; white-space: nowrap; }
+.th-mk { position: absolute; top: -18px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--ink); }
+.th-mk .t12 { position: absolute; bottom: 100%; left: 6px; white-space: nowrap; color: var(--ink); transform: translateY(14px); }
+.th-scale { padding-top: 2px; }
+.th-scale > div:last-child { display: flex; justify-content: space-between; }
+.th-out { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+@media (max-width: 760px) { .th-row { grid-template-columns: 1fr; gap: 24px; } .th-scale > div:first-child { display: none; } }
+
+@media (min-width: 901px) { .card h4 { min-height: 64px; } }
+:root[data-theme="dark"] .th-zone .t12 { color: #1F1F1F; }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .th-zone .t12 { color: #1F1F1F; } }
+
+/* cover without the square: contents sits bottom right */
+.layer-card { right: var(--m); top: auto; bottom: var(--m); }
+.quad.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.quad.three .q-tag { display: block; }
+@media (max-width: 760px) { .quad.three { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<header class="cover" id="top">
+  <div class="wrap top">
+    <span class="wordmark" role="img" aria-label="Nacar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="760 330 520 93" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M 836.320312 405.257812 L 836.394531 410.445312 L 836.171875 410.445312 L 780.195312 332.222656 L 760 332.222656 L 760 421.15625 L 772.734375 421.15625 L 772.734375 349.75 L 772.660156 342.96875 L 773.03125 342.96875 L 828.785156 421.15625 L 849.09375 421.15625 L 849.09375 332.222656 L 836.320312 332.222656 Z M 836.320312 405.257812 " fill-rule="nonzero"/><path d="M 907.671875 332.261719 L 864.5 421.15625 L 877.714844 421.15625 L 889.332031 396.625 L 943.121094 396.625 L 954.851562 421.15625 L 968.511719 421.15625 L 925.339844 332.261719 Z M 894.085938 386.433594 L 916.246094 340.523438 L 916.503906 340.523438 L 918.808594 345.488281 L 938.519531 386.472656 L 894.085938 386.472656 Z M 894.085938 386.433594 " fill-rule="nonzero"/><path d="M 1056.898438 393.214844 C 1055.453125 399.105469 1053.039062 403.628906 1047.507812 407 C 1041.53125 410.667969 1033.882812 412.484375 1024.527344 412.484375 C 1012.835938 412.484375 1004.632812 409.371094 998.171875 403.144531 C 991.75 396.921875 988.519531 387.992188 988.519531 376.355469 C 988.519531 364.71875 991.714844 356.085938 998.097656 350.007812 C 1004.484375 343.933594 1012.6875 340.929688 1024.378906 340.929688 C 1033.699219 340.929688 1041.382812 342.785156 1047.394531 346.453125 C 1052.851562 349.789062 1055.226562 354.382812 1056.75 360.199219 L 1070.671875 360.199219 C 1069.148438 350.601562 1064.472656 343.191406 1056.527344 337.929688 C 1048.546875 332.667969 1038.003906 330 1024.824219 330 C 1008.976562 330 996.835938 334 988.371094 342.003906 C 979.945312 350.007812 975.714844 361.460938 975.714844 376.320312 C 975.714844 391.175781 979.945312 403.183594 988.445312 411.261719 C 996.949219 419.339844 1009.160156 423.378906 1025.085938 423.378906 C 1038.078125 423.378906 1048.582031 420.746094 1056.601562 415.449219 C 1064.546875 410.222656 1069.261719 402.777344 1070.671875 393.179688 L 1056.863281 393.179688 Z M 1056.898438 393.214844 " fill-rule="nonzero"/><path d="M 1121.378906 332.261719 L 1078.207031 421.15625 L 1091.421875 421.15625 L 1103.042969 396.625 L 1156.832031 396.625 L 1168.5625 421.15625 L 1182.222656 421.15625 L 1139.011719 332.261719 Z M 1107.792969 386.433594 L 1129.953125 340.523438 L 1130.214844 340.523438 L 1132.515625 345.488281 L 1152.226562 386.472656 L 1107.792969 386.472656 Z M 1107.792969 386.433594 " fill-rule="nonzero"/><path d="M 1265.523438 421.15625 L 1243.359375 385.359375 L 1209.171875 385.359375 L 1209.171875 421.15625 L 1196.550781 421.15625 L 1196.550781 332.261719 L 1244.476562 332.261719 C 1257.171875 332.261719 1277.847656 334.855469 1277.847656 358.753906 C 1277.847656 375.058594 1267.527344 381.765625 1256.539062 384.25 L 1279.964844 420.933594 L 1279.964844 421.191406 L 1265.523438 421.191406 Z M 1209.171875 375.132812 L 1240.613281 375.132812 C 1251.824219 375.132812 1265.523438 374.058594 1265.523438 358.867188 C 1265.523438 342.597656 1251.824219 342.488281 1240.613281 342.488281 L 1209.171875 342.488281 L 1209.171875 375.171875 Z M 1209.171875 375.132812 " fill-rule="nonzero"/></g></svg></span>
+    <span class="t12">Strategy paper<br>Internal draft v1.3</span>
+  </div>
+  <nav class="layer-card t12" aria-label="Contents">
+    <span>Contents</span>
+    <ol>
+      <li><span>01</span><a href="#ch1">The shift, seen from outside</a></li>
+      <li><span>02</span><a href="#ch2">What it means</a></li>
+      <li><span>03</span><a href="#ch3">The opportunities</a></li>
+      <li><span>+</span><a href="#appendix">Appendix: the detail</a></li>
+    </ol>
+  </nav>
+  <div class="wrap body">
+    <h1 class="t128">Smaller teams, bigger partners</h1>
+    <p class="sub">What is changing in how companies design, what it means, and the opportunities it opens for Nacar.</p>
+    <div class="meta t12"><span>By Helena Lahora</span><span>22 October 2026</span></div>
+  </div>
+</header>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" aria-label="Chapters">
+  <div class="wrap">
+    <a class="wordmark" href="#top" aria-label="Nacar, back to top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="760 330 520 93" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="M 836.320312 405.257812 L 836.394531 410.445312 L 836.171875 410.445312 L 780.195312 332.222656 L 760 332.222656 L 760 421.15625 L 772.734375 421.15625 L 772.734375 349.75 L 772.660156 342.96875 L 773.03125 342.96875 L 828.785156 421.15625 L 849.09375 421.15625 L 849.09375 332.222656 L 836.320312 332.222656 Z M 836.320312 405.257812 " fill-rule="nonzero"/><path d="M 907.671875 332.261719 L 864.5 421.15625 L 877.714844 421.15625 L 889.332031 396.625 L 943.121094 396.625 L 954.851562 421.15625 L 968.511719 421.15625 L 925.339844 332.261719 Z M 894.085938 386.433594 L 916.246094 340.523438 L 916.503906 340.523438 L 918.808594 345.488281 L 938.519531 386.472656 L 894.085938 386.472656 Z M 894.085938 386.433594 " fill-rule="nonzero"/><path d="M 1056.898438 393.214844 C 1055.453125 399.105469 1053.039062 403.628906 1047.507812 407 C 1041.53125 410.667969 1033.882812 412.484375 1024.527344 412.484375 C 1012.835938 412.484375 1004.632812 409.371094 998.171875 403.144531 C 991.75 396.921875 988.519531 387.992188 988.519531 376.355469 C 988.519531 364.71875 991.714844 356.085938 998.097656 350.007812 C 1004.484375 343.933594 1012.6875 340.929688 1024.378906 340.929688 C 1033.699219 340.929688 1041.382812 342.785156 1047.394531 346.453125 C 1052.851562 349.789062 1055.226562 354.382812 1056.75 360.199219 L 1070.671875 360.199219 C 1069.148438 350.601562 1064.472656 343.191406 1056.527344 337.929688 C 1048.546875 332.667969 1038.003906 330 1024.824219 330 C 1008.976562 330 996.835938 334 988.371094 342.003906 C 979.945312 350.007812 975.714844 361.460938 975.714844 376.320312 C 975.714844 391.175781 979.945312 403.183594 988.445312 411.261719 C 996.949219 419.339844 1009.160156 423.378906 1025.085938 423.378906 C 1038.078125 423.378906 1048.582031 420.746094 1056.601562 415.449219 C 1064.546875 410.222656 1069.261719 402.777344 1070.671875 393.179688 L 1056.863281 393.179688 Z M 1056.898438 393.214844 " fill-rule="nonzero"/><path d="M 1121.378906 332.261719 L 1078.207031 421.15625 L 1091.421875 421.15625 L 1103.042969 396.625 L 1156.832031 396.625 L 1168.5625 421.15625 L 1182.222656 421.15625 L 1139.011719 332.261719 Z M 1107.792969 386.433594 L 1129.953125 340.523438 L 1130.214844 340.523438 L 1132.515625 345.488281 L 1152.226562 386.472656 L 1107.792969 386.472656 Z M 1107.792969 386.433594 " fill-rule="nonzero"/><path d="M 1265.523438 421.15625 L 1243.359375 385.359375 L 1209.171875 385.359375 L 1209.171875 421.15625 L 1196.550781 421.15625 L 1196.550781 332.261719 L 1244.476562 332.261719 C 1257.171875 332.261719 1277.847656 334.855469 1277.847656 358.753906 C 1277.847656 375.058594 1267.527344 381.765625 1256.539062 384.25 L 1279.964844 420.933594 L 1279.964844 421.191406 L 1265.523438 421.191406 Z M 1209.171875 375.132812 L 1240.613281 375.132812 C 1251.824219 375.132812 1265.523438 374.058594 1265.523438 358.867188 C 1265.523438 342.597656 1251.824219 342.488281 1240.613281 342.488281 L 1209.171875 342.488281 L 1209.171875 375.171875 Z M 1209.171875 375.132812 " fill-rule="nonzero"/></g></svg></a>
+    <ul>
+      <li class="hide-sm"><a class="link" href="#prologue">Prologue</a></li>
+      <li><a class="link" href="#ch1">1 The shift</a></li>
+      <li><a class="link" href="#ch2">2 What it means</a></li>
+      <li><a class="link" href="#ch3">3 The opportunities</a></li>
+      <li class="hide-sm"><a class="link" href="#appendix">Appendix</a></li>
+    </ul>
+    <span class="hint" aria-hidden="true">Presenting: ← → to step through</span>
+    <button class="btn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">Dark</button>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</nav>
+
+<main>
+
+<!-- ================= PROLOGUE ================= -->
+<section class="part" id="prologue">
+  <div class="wrap">
+    <div class="g12 block reveal" data-beat>
+      <div class="c1-3 block-label t12">Prologue</div>
+      <div class="c4-12">
+        <p class="t32" style="max-width:24ch;margin-bottom:32px">Across the market, companies are telling the same story in different words.</p>
+        <div class="prose">
+          <p>Some are pausing external design budgets to test what a small internal team with AI tools can do. Others plan to replace large external teams with a handful of in-house designers. Plans like these often change once they meet day-to-day reality, but they point in one direction.</p>
+          <p>This paper looks at that direction from the outside, in three steps.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="g12 block reveal" data-beat>
+      <div class="c1-3 block-label t12">How this paper works</div>
+      <div class="c4-12 brief">
+        <div><div class="t12 n">01 · The shift</div><div class="pips"><span class="sqs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="t12">5 forces</span></div><p class="t32">What is happening, and the proof.</p><p>Making got cheap and judgement didn't. Design is moving in-house, into smaller teams, under stricter rules.</p></div>
+        <div><div class="t12 n">02 · What it means</div><div class="pips"><span class="sqs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="t12">7 consequences</span></div><p class="t32">The consequences, and what they open.</p><p>Production stays inside. Expertise, structure, systems and proof are bought outside. Partners that sell hours are squeezed.</p></div>
+        <div><div class="t12 n">03 · The opportunities</div><div class="pips"><span class="sqs" aria-hidden="true"><i class="p"></i><i class="p"></i><b></b><i class="p"></i><i class="p"></i><b></b><i class="p"></i><i class="p"></i></span><span class="t12">6 opportunities, 3 needs</span></div><p class="t32">Where Nacar can help, and how.</p><p>Six opportunities in three groups, each with a clear offer, sold as capability rather than open-ended hours.</p></div>
+      </div>
+    </div>
+
+    <div class="g12 reveal">
+      <div class="c4-12 statement">
+        <div class="t12">The story in one line</div>
+        <p class="t32">Clients are buying less design as capacity and more as capability. Our value proposition should follow them there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 01 ================= -->
+<section class="part" id="ch1">
+  <div class="wrap">
+    <div class="g12 opener reveal" data-beat>
+      <div class="c1-3 label t12">Part 01</div>
+      <div class="c4-12">
+        <h2 class="t64">The shift, seen from outside</h2>
+        <p class="lede">What is happening in how companies design and build products, and the evidence behind it.</p>
+      </div>
+    </div>
+
+    <div class="g12 block reveal" data-beat>
+      <div class="c1-3 block-label t12">The starting point</div>
+      <div class="c4-12">
+        <h3 class="t32">Until recently, more design meant more designers</h3>
+        <p class="prose">A company that needed more design bought more people: agency teams, embedded designers, production hours. Partners like us were paid for that capacity. Five forces are changing that equation at the same time, and they reinforce each other.</p>
+        <div class="teamviz" role="img" aria-label="Illustration. Before: a large external team of fifteen designers, bought by the person and the hour. Now: four in-house designers working with AI, plus a partner for what they can't hold.">
+          <div class="tv-col"><div class="t12 muted">Before</div><div class="tv-grid"><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i><i class="sq-o"></i></div><p class="t12">A large external team, bought by the person and the hour</p></div>
+          <div class="tv-arrow" aria-hidden="true">→</div>
+          <div class="tv-col"><div class="t12 muted">Now</div><div class="tv-grid tv-now"><i class="sq-f"></i><i class="sq-f"></i><i class="sq-f"></i><i class="sq-f"></i><i class="sq-gap"></i><i class="sq-p">+</i></div><p class="t12">Three to five in-house designers with AI, and a partner for what they can't hold</p></div>
+          <div class="t12 muted tv-note">Illustrative</div>
+        </div>
+        <div class="facts" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+          <div><div class="t32">7</div><div class="t12">surveys of organisations, designers and developers, plus Eurostat enterprise data</div></div>
+          <div><div class="t32">147–8,403</div><div class="t12">respondents per survey, from small specialist samples to large global ones</div></div>
+          <div><div class="t32">4</div><div class="t12">market studies on in-housing and agency spend</div></div>
+          <div><div class="t32">5</div><div class="t12">EU laws and standards that apply between 2025 and 2027</div></div>
+        </div>
+        <div class="note">
+          <div class="t12">What the evidence covers, and what it doesn't</div>
+          <p>Most studies on how companies buy design look at marketing and creative work, and several surveys lean towards US software companies. Our clients build physical and digital products in Europe. We read these studies as early signals: creative work moved first, and product design is following. Most survey fieldwork took place between mid-2025 and mid-2026.</p>
+          <p style="margin:0"><strong>Why act now if Europe is behind?</strong> We expect the shift to reach our sectors later and unevenly. If that holds, the gap is our window to build the offers before our clients need them. It is an assumption, and one we should test.</p>
+        </div>
+        <div class="ftiles">
+          <a class="ft" href="#f1"><span class="t12 muted">Force 01</span><span class="ft-t">AI is everywhere. Its value isn't, yet.</span><span class="ft-n">88%</span><span class="t12 ft-l">use AI; only 39% see any effect on earnings</span><span class="t12 go">Read →</span></a>
+          <a class="ft" href="#f2"><span class="t12 muted">Force 02</span><span class="ft-t">Making is cheap. Judgement isn't.</span><span class="ft-n">91%</span><span class="t12 ft-l">of designers use AI every week</span><span class="t12 go">Read →</span></a>
+          <a class="ft" href="#f3"><span class="t12 muted">Force 03</span><span class="ft-t">Teams are smaller, flatter and more blended</span><span class="ft-n">33%</span><span class="t12 ft-l">of software companies building with AI expect smaller teams</span><span class="t12 go">Read →</span></a>
+          <a class="ft" href="#f4"><span class="t12 muted">Force 04</span><span class="ft-t">Design is bought differently</span><span class="ft-n">62%</span><span class="t12 ft-l">of multinational marketers cut external production spend</span><span class="t12 go">Read →</span></a>
+          <a class="ft" href="#f5"><span class="t12 muted">Force 05</span><span class="ft-t">The bar is rising</span><span class="ft-n">5</span><span class="t12 ft-l">EU laws and standards, 2025 to 2027</span><span class="t12 go">Read →</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Force 01 -->
+    <div class="g12 block" id="f1" data-beat>
+      <div class="c1-3 block-label t12 reveal">Force 01</div>
+      <div class="c4-12 reveal">
+        <h3 class="t32">AI is everywhere. Its value isn't, yet.</h3>
+        <div class="happening"><div class="t12">What's happening</div><p>Almost every large organisation now uses AI somewhere, but only about a third have started to scale it. Far fewer have changed how work is done around it, and those that have are the most likely to see value. Europe is earlier on the curve, and small companies most of all: 17% use AI, against 55% of large ones.</p></div>
+        <div class="proof">
+          <div class="lab">The proof</div>
+          <div class="who">Who was asked: Organisations worldwide (McKinsey) and EU companies (Eurostat)</div>
+          <div class="p"><div class="num">88%</div><div>of organisations use AI in at least one business function, up from 78% a year earlier</div><div class="src">McKinsey, State of AI 2025 (1,993 participants)</div></div>
+          <div class="p"><div class="num">39%</div><div>report any effect on earnings from AI</div><div class="src">McKinsey, State of AI 2025</div></div>
+          <div class="p"><div class="num">3×</div><div>AI high performers are nearly three times as likely to have fundamentally redesigned their workflows. McKinsey calls a company an AI high performer when at least 5% of its operating profit (EBIT) comes from AI and it describes the impact as significant. Only about 6% of companies surveyed qualify.</div><div class="src">McKinsey, State of AI 2025</div></div>
+          <div class="p"><div class="num">20%</div><div>of EU companies with ten or more employees used AI in 2025, up from 13.5% a year earlier. Spain sits on the average.</div><div class="src">Eurostat, December 2025</div></div>
+        </div>
+      </div>
+      <div class="c4-12 reveal" style="margin-top:32px">
+        <div class="chart-card" style="max-width:720px">
+          <div class="chart-title">Adoption runs ahead of value</div>
+          <div class="chart-sub">Share of organisations, 2025</div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="swatch" style="background:var(--gray-mark)"></i>Use and experimentation</span>
+            <span><i class="swatch" style="background:var(--accent)"></i>Evidence of value</span>
+          </div>
+          <div class="chart" id="chartValue" role="img" aria-label="Use AI in at least one function 88%. Experimenting with or scaling AI agents 62%. Report any effect on earnings from AI 39%. Scaling AI agents somewhere in the company 23%. AI high performers 6%."></div>
+          <details class="data"><summary>Show data</summary>
+            <table class="t"><thead><tr><th>Measure</th><th>Share</th></tr></thead><tbody id="valueTable"></tbody></table>
+          </details>
+          <div class="chart-src">Source: McKinsey, The state of AI in 2025 (1,993 participants in 105 countries). AI high performers: companies that attribute at least 5% of operating profit (EBIT) to AI and call the impact significant, about 6% of respondents.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Force 02 -->
+    <div class="g12 block" id="f2" data-beat>
+      <div class="c1-3 block-label t12 reveal">Force 02</div>
+      <div class="c4-12 reveal">
+        <h3 class="t32">Making is cheap. Judgement isn't.</h3>
+        <div class="happening"><div class="t12">What's happening</div><p>In a year, AI became part of everyday design and development work. Output grew faster than trust in it: 61% of developers say AI code often looks right but isn't reliable, and designers name unreliable output quality as their most common obstacle.</p></div>
+        <div class="proof">
+          <div class="lab">The proof</div>
+          <div class="who">Who was asked: Designers and developers, mostly in tech companies</div>
+          <div class="p"><div class="num">91%</div><div>of designers use AI every week for design work, up from 54% a year earlier</div><div class="src">Designer Fund and Foundation Capital, AI in Design 2026 (900+ designers)</div></div>
+          <div class="p"><div class="num">Half</div><div>of designers have shipped AI-generated code to production</div><div class="src">AI in Design 2026</div></div>
+          <div class="p"><div class="num">42%</div><div>of developers' code is written or assisted by AI, up from 6% in 2023</div><div class="src">Sonar, State of Code 2026 (1,149 developers)</div></div>
+          <div class="p"><div class="num">96%</div><div>of developers don't fully trust that AI-generated code is correct</div><div class="src">Sonar, State of Code 2026</div></div>
+        </div>
+      </div>
+      <div class="c4-12 reveal" style="margin-top:32px">
+        <div class="chart-card" style="max-width:720px">
+          <div class="chart-title">Making with AI became normal, fast</div>
+          <div class="chart-sub">Earlier and latest reading of each survey</div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="swatch dot" style="background:var(--accent-soft)"></i>Earlier</span>
+            <span><i class="swatch dot" style="background:var(--accent-strong)"></i>Latest</span>
+          </div>
+          <div class="chart" id="chartMaking" role="img" aria-label="Designers using AI weekly for design work rose from 54% in 2025 to 91% in 2026. The share of developers' code written or assisted by AI rose from 6% in 2023 to 42% in 2025."></div>
+          <details class="data"><summary>Show data</summary>
+            <table class="t"><thead><tr><th>Measure</th><th>Earlier</th><th>Latest</th></tr></thead>
+            <tbody><tr><td>Designers using AI weekly for design work (2025 → 2026)</td><td class="num">54%</td><td class="num">91%</td></tr><tr><td>Developers' code written or assisted by AI (2023 → 2025)</td><td class="num">6%</td><td class="num">42%</td></tr></tbody></table>
+          </details>
+          <div class="chart-src">Sources: Designer Fund and Foundation Capital, AI in Design 2026; Sonar, State of Code Developer Survey 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field-black reveal" data-beat>
+    <div class="wrap g12">
+      <div class="c1-3 t12">Craft</div>
+      <div class="c4-12">
+        <p class="t64" style="max-width:20ch;margin:0">“In an era where anyone can use AI to prompt their way to a prototype, craft … becomes the differentiator.”</p>
+        <p class="t12" style="margin-top:32px">Figma, State of the Designer 2026 · survey of 906 digital designers in five regions, including Europe and Spain</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- Force 03 -->
+    <div class="g12 block" id="f3" data-beat>
+      <div class="c1-3 block-label t12 reveal">Force 03</div>
+      <div class="c4-12 reveal">
+        <h3 class="t32">Teams are smaller, flatter and more blended</h3>
+        <div class="happening"><div class="t12">What's happening</div><p>Companies are planning for fewer people with wider roles: 78% of software companies building with AI are rethinking workforce planning. Designers write code, engineers and product managers design, and expectations rise faster than the structures around the team.</p></div>
+        <div class="proof">
+          <div class="lab">The proof</div>
+          <div class="who">Who was asked: Mostly US software companies, and designers</div>
+          <div class="p"><div class="num">33%</div><div>of software companies building with AI expect smaller teams</div><div class="src">ICONIQ, State of AI 2026 (300+ executives)</div></div>
+          <div class="p"><div class="num">32%</div><div>of design leaders keep headcount flat while expecting more output</div><div class="src">AI in Design 2026</div></div>
+          <div class="p"><div class="num">73%</div><div>of designers feel expectations rising</div><div class="src">AI in Design 2026</div></div>
+          <div class="p"><div class="num">28%</div><div>of leaders say their company has changed how it evaluates, pays or hires to match</div><div class="src">AI in Design 2026</div></div>
+        </div>
+      </div>
+      <div class="c4-12 reveal" style="margin-top:32px">
+        <div class="chart-card" style="max-width:720px">
+          <div class="chart-title">Roles are blurring</div>
+          <div class="chart-sub">Share of respondents, before and in the 2026 report</div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="swatch dot" style="background:var(--accent-soft)"></i>Before</span>
+            <span><i class="swatch dot" style="background:var(--accent-strong)"></i>2026 report</span>
+          </div>
+          <div class="chart" id="chartRoles" role="img" aria-label="Designers taking part in development rose from 21% to 41%. Developers doing design work rose from 44% to 60%."></div>
+          <details class="data"><summary>Show data</summary>
+            <table class="t"><thead><tr><th>Measure</th><th>Before</th><th>2026</th></tr></thead>
+            <tbody><tr><td>Designers taking part in development</td><td class="num">21%</td><td class="num">41%</td></tr><tr><td>Developers doing design work</td><td class="num">44%</td><td class="num">60%</td></tr></tbody></table>
+          </details>
+          <div class="chart-src">Source: Figma 2026 AI report (8,403 responses)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Force 04 -->
+    <div class="g12 block" id="f4" data-beat>
+      <div class="c1-3 block-label t12 reveal">Force 04</div>
+      <div class="c4-12 reveal">
+        <h3 class="t32">Design is bought differently</h3>
+        <div class="happening"><div class="t12">What's happening</div><p>Production is moving in-house and outside spend is getting selective. The clearest evidence comes from marketing and creative work, which moved first; product design is following. The largest agency groups are cutting and merging: Omnicom cut more than 4,000 jobs after taking over IPG, according to the Financial Times. Buyers expect to pay for outcomes rather than hours.</p></div>
+        <div class="proof">
+          <div class="lab">The proof</div>
+          <div class="who">Who was asked: Brands and marketers; the clearest evidence is in creative work</div>
+          <div class="p"><div class="num">55%</div><div>of brands expect to handle at least half of their creative work in-house within a year</div><div class="src">Adweek and NewtonX, March 2026</div></div>
+          <div class="p"><div class="num">62%</div><div>of multinational marketers cut external production spend by at least 15% in twelve months, crediting their own AI tools</div><div class="src">WFA research, 2026</div></div>
+          <div class="p"><div class="num">11,000</div><div>jobs cut since early 2025 at WPP, one of the world's largest advertising and marketing groups (owner of agencies such as Ogilvy, VML and AKQA), as it merges its creative agencies into one unit built around AI</div><div class="src">Reuters, reported by NST, September 2026</div></div>
+          <div class="p"><div class="num">2028</div><div>the year by which advertisers expect fees tied to outputs or outcomes</div><div class="src">Piscari, consultancy analysis, 2026</div></div>
+        </div>
+      </div>
+      <div class="c4-12 reveal" style="margin-top:32px">
+        <div class="chart-card" style="max-width:720px">
+          <div class="chart-title">Fewer plan to spend more with agencies</div>
+          <div class="chart-sub">Share of B2B marketing leaders expecting to increase spend, 2025 and 2026</div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="swatch dot" style="background:var(--accent-soft)"></i>2025</span>
+            <span><i class="swatch dot" style="background:var(--accent-strong)"></i>2026</span>
+          </div>
+          <div class="chart" id="chartSpend" role="img" aria-label="Expecting to increase digital marketing agency spend fell from 51% to 31%. Expecting to increase content creation agency spend fell from 41% to 26%."></div>
+          <details class="data"><summary>Show data</summary>
+            <table class="t"><thead><tr><th>Expect to increase spend on</th><th>2025</th><th>2026</th></tr></thead>
+            <tbody><tr><td>Digital marketing agencies</td><td class="num">51%</td><td class="num">31%</td></tr><tr><td>Content creation agencies</td><td class="num">41%</td><td class="num">26%</td></tr></tbody></table>
+          </details>
+          <div class="chart-src">Source: Forrester, 2026 B2B Brand and Communications Survey. 93% of respondents still use agencies.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Force 05 -->
+    <div class="g12 block" id="f5" data-beat>
+      <div class="c1-3 block-label t12 reveal">Force 05</div>
+      <div class="c4-12 reveal">
+        <h3 class="t32">The bar is rising</h3>
+        <div class="happening"><div class="t12">What's happening</div><p>Between mid-2025 and the end of 2027, accessibility, AI transparency, data access and product security become legal obligations in Europe. Most of them are met, or missed, in design decisions.</p></div>
+        <div class="years">
+          <div class="yr"><div class="yr-h t32">2025</div>
+            <div class="ev"><div class="t12 muted">June</div><div class="medium">European Accessibility Act applies</div><p>Digital products and services sold in the EU must be accessible.</p></div>
+          </div>
+          <div class="yr"><div class="yr-h t32">2026</div>
+            <div class="ev"><div class="t12 muted">August</div><div class="medium">AI Act transparency rules</div><p>People must be told when they deal with AI or AI-generated content.</p></div>
+            <div class="ev"><div class="t12 muted">September</div><div class="medium">Data Act: access by design</div><p>New connected products must make their data accessible to users by default.</p></div>
+            <div class="ev"><div class="t12 muted">September</div><div class="medium">Cyber Resilience Act reporting</div><p>Exploited vulnerabilities and severe incidents must be reported, with an early warning within 24 hours.</p></div>
+            <div class="ev"><div class="t12 muted">September</div><div class="medium">EN 301 549 moves to WCAG 2.2 AA</div><p>The EU accessibility standard adopts the latest guidelines.</p></div>
+            <div class="here t12">We are here: October 2026</div>
+          </div>
+          <div class="yr"><div class="yr-h t32">2027</div>
+            <div class="ev"><div class="t12 muted">December</div><div class="medium">Cyber Resilience Act applies in full</div><p>Security requirements become a condition for selling products with digital elements in the EU.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal">In short</div>
+      <div class="c4-12">
+        <h4 class="medium reveal" style="margin:0 0 16px">Direction of travel</h4><div class="dirs reveal"><a class="dir" href="#f1"><span class="t12 muted">Force 01</span><div class="dv"><span class="ar up" aria-hidden="true">↑</span><div><div class="medium">AI use rises</div><div class="t12 muted">88% of organisations</div></div></div><div class="dv"><span class="ar flat" aria-hidden="true">→</span><div><div class="medium">Value lags</div><div class="t12 muted">39% see an effect on earnings</div></div></div></a><a class="dir" href="#f2"><span class="t12 muted">Force 02</span><div class="dv"><span class="ar down" aria-hidden="true">↓</span><div><div class="medium">Making gets cheaper</div><div class="t12 muted">42% of developers' code is AI-assisted</div></div></div><div class="dv"><span class="ar up" aria-hidden="true">↑</span><div><div class="medium">Need for judgement rises</div><div class="t12 muted">96% of developers don't fully trust AI code</div></div></div></a><a class="dir" href="#f3"><span class="t12 muted">Force 03</span><div class="dv"><span class="ar down" aria-hidden="true">↓</span><div><div class="medium">Teams get smaller</div><div class="t12 muted">33% of software companies expect it</div></div></div><div class="dv"><span class="ar up" aria-hidden="true">↑</span><div><div class="medium">Expectations rise</div><div class="t12 muted">73% of designers feel it</div></div></div></a><a class="dir" href="#f4"><span class="t12 muted">Force 04</span><div class="dv"><span class="ar down" aria-hidden="true">↓</span><div><div class="medium">Outside production spend falls</div><div class="t12 muted">62% of marketers cut it</div></div></div><div class="dv"><span class="ar up" aria-hidden="true">↑</span><div><div class="medium">Paying for outcomes grows</div><div class="t12 muted">Expected by 2028</div></div></div></a><a class="dir" href="#f5"><span class="t12 muted">Force 05</span><div class="dv"><span class="ar up" aria-hidden="true">↑</span><div><div class="medium">Legal duties grow</div><div class="t12 muted">5 laws and standards by 2027</div></div></div><div class="dv"><span class="ar up" aria-hidden="true">↑</span><div><div class="medium">More is decided in design</div><div class="t12 muted">Most are met, or missed, there</div></div></div></a></div>
+        <div class="statement reveal" style="margin:48px 0 0">
+          <div class="t12">Taken together</div>
+          <p class="t32">Design isn't shrinking. It is moving closer to the business, into smaller teams that are asked to do more, faster, under stricter rules.</p>
+          <p class="prose" style="margin-top:24px">Designers feel it. In Europe, the most cautious region, 59% believe the job market has declined and only 38% report rising job satisfaction. Figma's reading is worth keeping: the profession is “in flux, but not in decline”.</p>
+          <div class="meters" aria-hidden="true"><div class="mt"><div class="t32">59%</div><div class="mbar"><i style="width:59%"></i></div><div class="t12">of designers in Europe believe the job market has declined</div></div><div class="mt"><div class="t32">38%</div><div class="mbar"><i style="width:38%"></i></div><div class="t12">report rising job satisfaction</div></div></div>
+          <p class="prose" style="margin-top:12px">We expect the shift to reach our sectors later and unevenly. If it does, that is our window.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 02 ================= -->
+<section class="part" id="ch2">
+  <div class="wrap">
+    <div class="g12 opener reveal" data-beat>
+      <div class="c1-3 label t12">Part 02</div>
+      <div class="c4-12">
+        <h2 class="t64">What it means</h2>
+        <p class="lede">The shift has consequences for in-house teams, for the partners they work with, and for Nacar. Each consequence closes one door and opens another.</p>
+      </div>
+    </div>
+
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal">Seven consequences</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">What follows from the shift, and what it opens</h3>
+        <p class="prose reveal">Each consequence follows from one or more forces. Each opens a possibility: a need that someone will meet. Design system figures come from zeroheight's 2026 report, a small sample of 147 practitioners.</p>
+        <div class="ctiles reveal"><a class="ct" href="#c1"><svg class="pic" viewBox="0 0 96 64" role="img" aria-label="Expertise is bought outside"><rect class="s" x="1" y="9" width="56" height="46"/><rect class="f" x="13" y="19" width="12" height="12"/><rect class="f" x="31" y="19" width="12" height="12"/><rect class="f" x="13" y="35" width="12" height="12"/><rect class="f" x="31" y="35" width="12" height="12"/><rect class="p" x="77" y="25" width="16" height="16"/><path class="s" d="M74 33H62M66 29l-4 4 4 4"/></svg><span class="t12 muted">01</span><span class="ct-t">Expertise is bought outside</span><span class="fchips" aria-hidden="true"><i class=""></i><i class="on"></i><i class=""></i><i class="on"></i><i class=""></i></span><span class="t12 muted">Forces 02 and 04</span></a><a class="ct" href="#c2"><svg class="pic" viewBox="0 0 96 64" role="img" aria-label="Small teams lose structure"><rect class="s" x="13" y="6" width="10" height="10"/><rect class="s" x="7" y="20" width="10" height="10"/><rect class="s" x="19" y="20" width="10" height="10"/><rect class="s" x="1" y="34" width="10" height="10"/><rect class="s" x="13" y="34" width="10" height="10"/><rect class="s" x="25" y="34" width="10" height="10"/><path class="s" d="M41 30H53M49 26l4 4-4 4"/><rect class="d" x="71" y="16" width="12" height="12"/><rect class="f" x="58" y="36" width="8" height="8"/><rect class="f" x="68" y="36" width="8" height="8"/><rect class="f" x="78" y="36" width="8" height="8"/><rect class="f" x="88" y="36" width="8" height="8"/></svg><span class="t12 muted">02</span><span class="ct-t">Small teams lose structure</span><span class="fchips" aria-hidden="true"><i class=""></i><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></span><span class="t12 muted">Force 03</span></a><a class="ct" href="#c3"><svg class="pic" viewBox="0 0 96 64" role="img" aria-label="Consistency is the bottleneck"><rect class="s" x="1" y="6" width="26" height="52"/><g transform="rotate(-6 48 32)"><rect class="s" x="35" y="12" width="26" height="40"/><rect class="f" x="40" y="20" width="11" height="6"/></g><rect class="s" x="69" y="6" width="26" height="52"/><rect class="f" x="6" y="44" width="16" height="6"/><rect class="p" x="73" y="28" width="18" height="10"/></svg><span class="t12 muted">03</span><span class="ct-t">Consistency is the bottleneck</span><span class="fchips" aria-hidden="true"><i class=""></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span><span class="t12 muted">Forces 02 and 03</span></a><a class="ct" href="#c4"><svg class="pic" viewBox="0 0 96 64" role="img" aria-label="Quality needs an owner"><rect class="s" x="1" y="6" width="52" height="52"/><path class="m" d="M9 18H45M9 27H41M9 36H31"/><path class="s" d="M32 45l5 5 9-10"/><circle class="d" cx="77" cy="20" r="8"/><path class="d" d="M63 58c0-14 28-14 28 0"/></svg><span class="t12 muted">04</span><span class="ct-t">Quality needs an owner</span><span class="fchips" aria-hidden="true"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class="on"></i></span><span class="t12 muted">Forces 02 and 05</span></a><a class="ct" href="#c5"><svg class="pic" viewBox="0 0 96 64" role="img" aria-label="Connected products face new rules"><rect class="s" x="1" y="14" width="36" height="36"/><rect class="f" x="9" y="20" width="20" height="4"/><circle class="s" cx="19" cy="36" r="8"/><path class="s" d="M37 32H69"/><rect class="p" x="48" y="27" width="10" height="10"/><rect class="s" x="69" y="6" width="24" height="52" rx="3"/><path class="m" d="M75 18H87M75 26H85"/></svg><span class="t12 muted">05</span><span class="ct-t">Connected products face new rules</span><span class="fchips" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="on"></i></span><span class="t12 muted">Force 05</span></a><a class="ct" href="#c6"><svg class="pic" viewBox="0 0 96 64" role="img" aria-label="AI value needs redesigned work"><rect class="f" x="1" y="30" width="18" height="18"/><rect class="p" x="39" y="30" width="18" height="18"/><rect class="f" x="77" y="30" width="18" height="18"/><path class="s" d="M19 39H39M57 39H77"/><path class="s" d="M10 26C10 4 86 4 86 26M82 22l4 4 4-4"/></svg><span class="t12 muted">06</span><span class="ct-t">AI value needs redesigned work</span><span class="fchips" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="t12 muted">Force 01</span></a><a class="ct" href="#c7"><svg class="pic" viewBox="0 0 96 64" role="img" aria-label="Capacity sellers are squeezed"><rect class="s" x="41" y="6" width="14" height="10"/><rect class="s" x="41" y="20" width="14" height="10"/><rect class="s" x="41" y="34" width="14" height="10"/><rect class="s" x="41" y="48" width="14" height="10"/><path class="s" d="M2 32H31M27 28l4 4-4 4"/><path class="s" d="M94 32H65M69 28l-4 4 4 4"/></svg><span class="t12 muted">07</span><span class="ct-t">Capacity sellers are squeezed</span><span class="fchips" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i><i class="on"></i><i class=""></i></span><span class="t12 muted">Force 04</span></a><div class="ct ct-note"><span class="t12">How to read it</span><span class="ct-t">Each square row shows the five forces, in order. Filled squares are the forces behind each consequence.</span><span class="t12" style="margin-top:auto">Detail and possibilities below</span></div></div>
+        <div class="rules conseq reveal">
+          <div class="r" id="c1"><div class="n">01</div><div><div class="title">Production stays inside; expertise is bought outside</div><p>In marketing and creative work, in-house teams with AI already cover day-to-day production, and we see the first signs in product design. What in-house teams still look for outside is what four or five people can't hold: senior judgement, specialist depth and a fresh perspective.</p></div><dl><div><dt>Because of</dt><dd><span class="tag">Force 02</span><span class="tag">Force 04</span></dd></div></dl><div class="poss"><div class="t12 muted">Possibility</div><p>Expertise on call, bought by the project rather than by the seat.</p></div></div>
+          <div class="r" id="c2"><div class="n">02</div><div><div class="title">Small teams lose the structure large teams had</div><p>Leadership, standards and review used to come with headcount. Smaller, blended teams run with less of it, just as expectations rise. Designers name lack of clarity and poor leadership as what holds them back most.</p></div><dl><div><dt>Because of</dt><dd><span class="tag">Force 03</span></dd></div></dl><div class="poss"><div class="t12 muted">Possibility</div><p>Help making the move from external to internal, then part-time design leadership, shared standards and coaching.</p></div></div>
+          <div class="r" id="c3"><div class="n">03</div><div><div class="title">Consistency becomes the bottleneck</div><p>When AI builds fast, screens drift apart across products and brands. The systems meant to prevent it are short of people: 61% of design system teams say they are understaffed, and 60% have no automation between design tokens and code. Their support is slipping too: satisfaction with leadership buy-in fell from 42% to 32% in a year. And half of designers have already shipped AI-generated code, which follows the design system only if the system is part of what AI tools read.</p><div class="minis" aria-hidden="true"><div class="mn"><span class="t12">Understaffed</span><span class="mbar"><i style="width:61%"></i></span><span class="t12 v">61%</span></div><div class="mn"><span class="t12">No automation from tokens to code</span><span class="mbar"><i style="width:60%"></i></span><span class="t12 v">60%</span></div><div class="mn"><span class="t12">Satisfied with leadership buy-in</span><span class="mbar"><i style="width:32%"></i><b style="left:42%"></b></span><span class="t12 v">32%, was 42%</span></div><div class="t12 muted">Design system teams, zeroheight 2026. The tick marks last year.</div></div></div><dl><div><dt>Because of</dt><dd><span class="tag">Force 02</span><span class="tag">Force 03</span></dd></div></dl><div class="poss"><div class="t12 muted">Possibility</div><p>AI-ready design systems and design operations, built and run as a service.</p></div></div>
+          <div class="r" id="c4"><div class="n">04</div><div><div class="title">Quality and compliance need an owner</div><p>More of every product is built with AI that people don't fully trust, while accessibility and AI transparency are now legal duties. In our experience, a team of four rarely includes an accessibility specialist or a design QA role, and only 44% of design system teams are satisfied with accessibility in their system.</p><div class="minis" aria-hidden="true"><div class="mn"><span class="t12">Satisfied with accessibility in their system</span><span class="mbar"><i style="width:44%"></i></span><span class="t12 v">44%</span></div><div class="t12 muted">Design system teams, zeroheight 2026</div></div></div><dl><div><dt>Because of</dt><dd><span class="tag">Force 02</span><span class="tag">Force 05</span></dd></div></dl><div class="poss"><div class="t12 muted">Possibility</div><p>Recurring design QA and compliance, with accessible components and AI labelling built into the design system, and evidence that leaders and regulators can use.</p></div></div>
+          <div class="r" id="c5"><div class="n">05</div><div><div class="title">Connected products become a design and regulation problem</div><p>From September 2026, new connected products must give users access to their data by default, and security rules follow through 2027. Device, app and service must work as one product, under rules that digital-only teams don't cover.</p></div><dl><div><dt>Because of</dt><dd><span class="tag">Force 05</span></dd></div></dl><div class="poss"><div class="t12 muted">Possibility</div><p>Connected product design across hardware and software, with data access and security designed in as reusable patterns.</p></div></div>
+          <div class="r" id="c6"><div class="n">06</div><div><div class="title">AI value depends on redesigning the work</div><p>Companies have the tools but not the return. The few that get value are also the ones that have redesigned workflows, products and services around AI. Doing that takes strategy and design working together.</p></div><dl><div><dt>Because of</dt><dd><span class="tag">Force 01</span></dd></div></dl><div class="poss"><div class="t12 muted">Possibility</div><p>AI transition strategy that links product, service and team.</p></div></div>
+          <div class="r" id="c7"><div class="n">07</div><div><div class="title">Partners that sell capacity are squeezed</div><p>Partners paid for people and hours sell exactly what AI and in-housing compress. The largest groups are cutting and merging, and buyers expect to pay for outcomes.</p></div><dl><div><dt>Because of</dt><dd><span class="tag">Force 04</span></dd></div></dl><div class="poss"><div class="t12 muted">Possibility</div><p>Relationships sold as access and outcomes: programmes, subscriptions and outcome-linked fees.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partners -->
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal">For partners</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Each alternative solves one piece</h3>
+        <p class="prose reveal">A small in-house team can turn to several kinds of partner today. Each is good at something, and each leaves something out.</p>
+        <div class="legend reveal" aria-hidden="true"><span><span class="dot full"></span>Strong</span><span><span class="dot half"></span>Partly</span><span><span class="dot empty"></span>Rarely</span></div>
+        <div class="table-wrap reveal">
+          <table class="t matrix">
+            <thead><tr><th scope="col">Partner</th><th scope="col" class="c">Judgement</th><th scope="col" class="c">Craft</th><th scope="col" class="c">Systems</th><th scope="col" class="c">Specialists</th><th scope="col" class="c">Proof</th><th scope="col" class="c">Physical and digital</th></tr></thead>
+            <tbody>
+              <tr><td>Design subscriptions</td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td></tr>
+              <tr><td>Large consultancies</td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td></tr>
+              <tr><td>Development agencies</td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td></tr>
+              <tr><td>Freelancers</td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td></tr>
+              <tr><td>Doing it all in-house</td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td></tr>
+              <tr class="us"><td>Nacar, with the six offers</td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="t12 muted reveal" style="margin-top:12px">Our reading. Nacar's systems and proof are "partly" until the starting kit and our measurement work are built.</p>
+        <div class="statement reveal" style="margin-bottom:0">
+          <div class="t12">The open space</div>
+          <p class="t32">Few partners combine judgement, craft, systems, specialists and proof, across physical and digital. That is the space we can compete for.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nacar -->
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal">For Nacar</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Exposed where we sell capacity, ready where it counts</h3>
+        <p class="prose reveal">Nacar started in Barcelona in 2006, when two industrial designers set out to build an international studio that helps companies through transformation. Strategy, research, foresight, business design, brand, service design, UX/UI, industrial design and engineering sit under one roof.</p>
+        <div class="facts reveal">
+          <div><div class="t32">2006</div><div class="t12">Founded in Barcelona</div></div>
+          <div><div class="t32">130+</div><div class="t12">People</div></div>
+          <div><div class="t32">23+</div><div class="t12">Nationalities</div></div>
+          <div><div class="t32">6</div><div class="t12">Studio locations</div></div>
+          <div><div class="t32">70</div><div class="t12">Design awards</div></div>
+          <div><div class="t32">10+</div><div class="t12">Years with some clients</div></div>
+        </div>
+        <div class="statement reveal" style="margin-top:0">
+          <div class="t12">Our positioning and value proposition, as agreed with Nacar's partners (quoted as written)</div>
+          <p class="t32">Hello, we are Nacar. We create real products, services and experiences for ambitious organizations, using creativity to turn complexity into measurable value.</p>
+          <p class="t32" style="margin-top:32px">Creativity turned into real solutions. Accelerated by systems. Built for measurable value.</p>
+        </div>
+        <div class="prose reveal">
+          <p>The positioning points the right way. Creativity answers the judgement and craft AI can't supply, systems answer smaller teams, and measurable value answers buyers who want outcomes.</p>
+          <p>The way we sell digital work doesn't yet. We sell <strong>fixed-scope projects</strong> and <strong>designers embedded in client teams</strong>, both priced in people and hours. Most of our digital revenue, and a large group of our designers, sit in embedded and production work. That is the part of our business most exposed when production moves inside and capacity sellers are squeezed.</p>
+          <p>We have started on the answer. In August 2026 we designed a design ops architecture: a starting kit for a client's design system, a seven-step way to adapt it to each client, and AI helpers that ask a person before acting. It exists on paper; it isn't built yet.</p>
+        </div>
+        <h4 class="medium reveal" style="margin:48px 0 16px">How we sell today, and where clients are going</h4>
+        <div class="spectrum reveal">
+          <div class="sp-ends t12"><span>Sold as capacity: people and hours</span><span>Sold as capability: results and access</span></div>
+          <div class="sp-bar" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+          <div class="sp-move t12">Where client spend is moving</div>
+          <div class="sp-cols">
+            <div><div class="t12 muted">Exposed</div><ul><li>Designers embedded in client teams</li><li>Production hours</li></ul><p class="t12">Most of our digital revenue, and a large group of our designers, sit here.</p></div>
+            <div><div class="t12 muted">In between</div><ul><li>Fixed-scope projects</li></ul><p class="t12">A defined result, but priced in people and hours.</p></div>
+            <div><div class="t12 muted">Ready</div><ul><li>Strategy, research and foresight</li><li>Specialists across 130+ people</li><li>Industrial, HMI and digital under one roof</li></ul><p class="t12">What small teams still buy outside.</p></div>
+          </div>
+          <p class="t12 muted" style="margin:12px 0 0">Our reading.</p>
+        </div>
+        <h4 class="medium reveal" style="margin:48px 0 8px">Where we stand on each possibility</h4>
+        <div class="legend reveal" aria-hidden="true"><span><span class="dot full"></span>Yes</span><span><span class="dot half"></span>Partly</span><span><span class="dot empty"></span>Not yet</span><span class="muted">Our assessment</span></div>
+        <div class="table-wrap reveal">
+          <table class="t">
+            <thead><tr><th scope="col">Possibility</th><th scope="col" class="c">We can do it</th><th scope="col" class="c">We sell it</th><th scope="col">What Nacar has today</th><th scope="col">What's missing</th></tr></thead>
+            <tbody>
+              <tr><td>01 Expertise on call</td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td>Specialists across 130+ people</td><td>A way to bring them in for a defined project; today they are mostly long placements</td></tr>
+              <tr><td>02 Transition and leadership</td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td>Years of embedding designers in client teams; Nacar Academy</td><td>A transition or leadership offer; the Academy is open only to our people</td></tr>
+              <tr><td>03 Systems as a service</td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td>A design ops architecture, defined in August 2026; designers who already build working prototypes with AI coding tools</td><td>The starting kit isn't built, we don't deliver design in code, and we have no full-stack developer</td></tr>
+              <tr><td>04 Design QA and compliance</td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td>New hires with accessibility knowledge; research expertise</td><td>A shared accessibility workflow and checklist, a packaged audit and monitoring offer; we report deliverables, not outcomes</td></tr>
+              <tr><td>05 Connected product design</td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td>Industrial, HMI and digital design under one roof since 2006</td><td>Sold separately, and not yet framed around the new rules</td></tr>
+              <tr><td>06 AI transition strategy</td><td class="c"><span class="dot full" role="img" aria-label="Strong"></span></td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td>Strategy, foresight and business design in-house</td><td>Rarely offered to the digital team as one package</td></tr>
+              <tr><td>07 Access and outcomes</td><td class="c"><span class="dot half" role="img" aria-label="Partly"></span></td><td class="c"><span class="dot empty" role="img" aria-label="Rarely"></span></td><td>Long-standing clients, some for more than a decade</td><td>Pricing by person and hour; no subscription or outcome-linked fee</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="statement reveal" style="margin-bottom:0">
+          <div class="t12">In one line</div>
+          <p class="t32">Most of what clients will need is already in our studios. The way we package and sell it was built for the old model.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 03 ================= -->
+<section class="part" id="ch3">
+  <div class="wrap">
+    <div class="g12 opener reveal" data-beat>
+      <div class="c1-3 label t12">Part 03</div>
+      <div class="c4-12">
+        <h2 class="t64">The opportunities</h2>
+        <p class="lede">Six opportunities in three groups. Each opportunity is a situation companies are in, with an offer that answers it: the problem, what we do, and what the client gets. The detail is in the appendix.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field-pink reveal" data-beat>
+    <div class="wrap g12">
+      <div class="c1-3 t12">The promise behind all six</div>
+      <div class="c4-12">
+        <h3 class="t64">Nacar makes in-house design teams stronger.</h3>
+        <p style="margin-top:32px">We bring the judgement, craft, systems, specialists and proof that a small team can't hold on its own, across physical and digital.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal">From the shift to the opportunities</div>
+      <div class="c4-12 reveal">
+        <h3 class="t32" style="margin-bottom:24px">Five forces, seven consequences, three needs</h3>
+        <svg class="flow" viewBox="0 0 1000 640" role="img" aria-labelledby="flowT"><title id="flowT">How the five forces lead to seven consequences and three needs with six offers</title><text class="hd" x="0" y="20">Five forces</text><text class="hd" x="300" y="20">Seven consequences</text><text class="hd" x="690" y="20">Three needs, six offers</text><path class="link a" d="M210,202 C265,202 245,72 300,72"/><path class="link a" d="M210,438 C265,438 245,72 300,72"/><path class="link a" d="M210,320 C265,320 245,158 300,158"/><path class="link a" d="M210,202 C265,202 245,244 300,244"/><path class="link a" d="M210,320 C265,320 245,244 300,244"/><path class="link a" d="M210,202 C265,202 245,330 300,330"/><path class="link a" d="M210,556 C265,556 245,330 300,330"/><path class="link a" d="M210,556 C265,556 245,416 300,416"/><path class="link a" d="M210,84 C265,84 245,502 300,502"/><path class="link a" d="M210,438 C265,438 245,588 300,588"/><path class="link b" d="M580,72 C635,72 635,108 690,108"/><path class="link b" d="M580,158 C635,158 635,108 690,108"/><path class="link b" d="M580,244 C635,244 635,258 690,258"/><path class="link b" d="M580,330 C635,330 635,258 690,258"/><path class="link b" d="M580,416 C635,416 635,408 690,408"/><path class="link b" d="M580,502 C635,502 635,408 690,408"/><path class="link b" d="M580,588 C635,588 635,558 690,558"/><rect class="fbox" x="0" y="56.0" width="210" height="56"/><text x="14" y="89"><tspan class="num">01</tspan>  AI is everywhere</text><rect class="fbox" x="0" y="174.0" width="210" height="56"/><text x="14" y="207"><tspan class="num">02</tspan>  Making is cheap</text><rect class="fbox" x="0" y="292.0" width="210" height="56"/><text x="14" y="325"><tspan class="num">03</tspan>  Smaller, blended teams</text><rect class="fbox" x="0" y="410.0" width="210" height="56"/><text x="14" y="443"><tspan class="num">04</tspan>  Bought differently</text><rect class="fbox" x="0" y="528.0" width="210" height="56"/><text x="14" y="561"><tspan class="num">05</tspan>  The bar is rising</text><rect class="cbox" x="300" y="47.0" width="280" height="50"/><text x="314" y="77"><tspan class="num">01</tspan>  Expertise bought outside</text><rect class="cbox" x="300" y="133.0" width="280" height="50"/><text x="314" y="163"><tspan class="num">02</tspan>  Small teams lose structure</text><rect class="cbox" x="300" y="219.0" width="280" height="50"/><text x="314" y="249"><tspan class="num">03</tspan>  Consistency is the bottleneck</text><rect class="cbox" x="300" y="305.0" width="280" height="50"/><text x="314" y="335"><tspan class="num">04</tspan>  Quality needs an owner</text><rect class="cbox" x="300" y="391.0" width="280" height="50"/><text x="314" y="421"><tspan class="num">05</tspan>  Connected products, new rules</text><rect class="cbox" x="300" y="477.0" width="280" height="50"/><text x="314" y="507"><tspan class="num">06</tspan>  AI value needs redesigned work</text><rect class="cbox" x="300" y="563.0" width="280" height="50"/><text x="314" y="593"><tspan class="num">07</tspan>  Capacity sellers squeezed</text><rect class="nbox" x="690" y="60.0" width="310" height="96"/><text class="nt" x="706" y="90.0">Lead the team</text><text class="no" x="706" y="114.0">Team Transition &amp; Leadership</text><text class="no" x="706" y="134.0">Specialist Bench</text><rect class="nbox" x="690" y="210.0" width="310" height="96"/><text class="nt" x="706" y="240.0">Build it right</text><text class="no" x="706" y="264.0">AI Design Ops &amp; Systems</text><text class="no" x="706" y="284.0">Quality &amp; Compliance</text><rect class="nbox" x="690" y="360.0" width="310" height="96"/><text class="nt" x="706" y="390.0">Rethink the product</text><text class="no" x="706" y="414.0">Connected Product Design</text><text class="no" x="706" y="434.0">AI Transition Strategy &amp; Foresight</text><rect class="nbox sell" x="690" y="527.0" width="310" height="62"/><text class="nt" x="706" y="557.0">How we sell all six</text><text class="no" x="706" y="581.0">Results or access, not open-ended hours</text></svg>
+        <div class="flow-list">
+          <div><div class="medium">Lead the team</div><p>Team Transition &amp; Leadership · Specialist Bench</p><p class="t12 muted">From: expertise bought outside; small teams lose structure</p></div>
+          <div><div class="medium">Build it right</div><p>AI Design Ops &amp; Systems · Quality &amp; Compliance</p><p class="t12 muted">From: consistency is the bottleneck; quality needs an owner</p></div>
+          <div><div class="medium">Rethink the product</div><p>Connected Product Design · AI Transition Strategy &amp; Foresight</p><p class="t12 muted">From: connected products under new rules; AI value needs redesigned work</p></div>
+          <div><div class="medium">How we sell all six</div><p>Results or access, not open-ended hours</p><p class="t12 muted">From: capacity sellers are squeezed</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g12 block" id="n1" data-beat>
+      <div class="c1-3 block-label t12 reveal">Need 01</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Lead the team</h3>
+        <p class="prose reveal" style="margin-top:16px">Small in-house teams lose the leadership, standards and specialist depth that came with a large team. <span class="muted">Builds on: expertise bought outside; small teams lose structure.</span></p>
+        <div class="cards reveal">
+          <div class="card"><div class="t12 num">01</div><h4>Team Transition &amp; Leadership</h4><svg class="osch" viewBox="0 0 340 112" role="img" aria-label="Schematic: an outgoing team of ten is replaced by a new team of four, with Nacar as part-time lead after three to six months alongside."><text class="tm" x="0" y="12">Outgoing team</text><rect class="s" x="0" y="26" width="12" height="12"/><rect class="s" x="16" y="26" width="12" height="12"/><rect class="s" x="32" y="26" width="12" height="12"/><rect class="s" x="48" y="26" width="12" height="12"/><rect class="s" x="64" y="26" width="12" height="12"/><rect class="s" x="0" y="42" width="12" height="12"/><rect class="s" x="16" y="42" width="12" height="12"/><rect class="s" x="32" y="42" width="12" height="12"/><rect class="s" x="48" y="42" width="12" height="12"/><rect class="s" x="64" y="42" width="12" height="12"/><path class="s" d="M86 40H112M106 34l6 6-6 6"/><text class="tm" x="124" y="12">New team</text><rect class="p" x="153" y="22" width="16" height="16"/><path class="d" d="M161 38V52"/><text class="tx" x="176" y="35">Nacar, part-time lead</text><rect class="f" x="124" y="54" width="14" height="14"/><rect class="f" x="144" y="54" width="14" height="14"/><rect class="f" x="164" y="54" width="14" height="14"/><rect class="f" x="184" y="54" width="14" height="14"/><rect class="f" x="124" y="86" width="122" height="4"/><path class="d" d="M250 88H340"/><text class="tm" x="124" y="106">3–6 months alongside</text><text class="tm" x="340" y="106" text-anchor="end">then part-time</text></svg>
+            <div class="part"><div class="t12">The problem</div><p>A company replaces a large external design team with three to five in-house designers. Knowledge leaves with the old team, and nobody sets direction for the new one.</p></div>
+            <div class="part"><div class="t12">What we do</div><p>We help shape the new team, work alongside it for three to six months, then stay on as its part-time design lead.</p></div>
+            <div class="part"><div class="t12">What the client gets</div><p class="medium">A small team that delivers steadily within months, with nothing lost in the move.</p></div>
+            <div class="part users-part"><div class="t12">For the people who use it</div><p>The product keeps improving through the change.</p></div>
+            <div class="start t12">Start with a 3–6 month programme</div></div>
+          <div class="card"><div class="t12 num">02</div><h4>Specialist Bench</h4><svg class="osch" viewBox="0 0 340 112" role="img" aria-label="Schematic: a specialist from the Nacar bench joins a small in-house team for a defined project."><text class="tm" x="0" y="12">Small in-house team</text><rect class="s" x="0" y="22" width="150" height="64"/><rect class="f" x="14" y="47" width="14" height="14"/><rect class="f" x="34" y="47" width="14" height="14"/><rect class="f" x="54" y="47" width="14" height="14"/><rect class="f" x="74" y="47" width="14" height="14"/><rect class="p" x="106" y="45" width="18" height="18"/><text class="tm" x="210" y="12">Nacar bench</text><rect class="s" x="210" y="26" width="18" height="18"/><rect class="s" x="236" y="26" width="18" height="18"/><rect class="s" x="262" y="26" width="18" height="18"/><rect class="s" x="288" y="26" width="18" height="18"/><rect class="s" x="314" y="26" width="18" height="18"/><rect class="d" x="210" y="52" width="18" height="18"/><rect class="s" x="236" y="52" width="18" height="18"/><rect class="s" x="262" y="52" width="18" height="18"/><rect class="s" x="288" y="52" width="18" height="18"/><rect class="s" x="314" y="52" width="18" height="18"/><path class="s" d="M204 61C178 61 160 54 132 54M138 50l-6 4 6 4"/><text class="tm" x="150" y="106">for a defined project, then hands over</text></svg>
+            <div class="part"><div class="t12">The problem</div><p>A team of four can't hire a researcher, an accessibility expert and a design engineer. Yet those skills decide whether the product works.</p></div>
+            <div class="part"><div class="t12">What we do</div><p>We bring in our specialists for a defined project, such as a research study or an accessibility review, and leave what they learn with the team.</p></div>
+            <div class="part"><div class="t12">What the client gets</div><p class="medium">Expertise when it's needed, without a hire.</p></div>
+            <div class="part users-part"><div class="t12">For the people who use it</div><p>Research and accessibility reach the product itself.</p></div>
+            <div class="start t12">Start with one specialist project, such as a research study</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g12 block" id="n2" data-beat>
+      <div class="c1-3 block-label t12 reveal">Need 02</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Build it right</h3>
+        <p class="prose reveal" style="margin-top:16px">AI makes building fast. Keeping products consistent, accessible and trustworthy now needs an owner. <span class="muted">Builds on: consistency is the bottleneck; quality needs an owner.</span></p>
+        <div class="cards reveal">
+          <div class="card"><div class="t12 num">03</div><h4>AI Design Ops &amp; Systems</h4><p class="t12 muted" style="margin:0">One design system for every screen</p><svg class="osch" viewBox="0 0 340 112" role="img" aria-label="Schematic: one set of design rules feeds a machine display, an app and the web."><text class="tm" x="0" y="14">One set of design rules</text><rect class="p" x="146" y="0" width="48" height="24"/><path class="s" d="M170 24V34M50 34H290M50 34V50M170 34V44M290 34V50"/><rect class="s" x="10" y="50" width="80" height="40"/><rect class="p" x="18" y="58" width="24" height="6"/><path class="m" d="M18 72H70M18 80H58"/><rect class="s" x="155" y="44" width="30" height="52" rx="3"/><rect class="p" x="161" y="54" width="18" height="6"/><path class="m" d="M161 68H179M161 76H175"/><rect class="s" x="250" y="50" width="80" height="40"/><path class="s" d="M250 58H330"/><rect class="p" x="258" y="64" width="24" height="6"/><path class="m" d="M258 78H312"/><text class="tm" x="10" y="108">Machine display</text><text class="tm" x="170" y="110" text-anchor="middle">App</text><text class="tm" x="330" y="108" text-anchor="end">Web</text></svg>
+            <div class="part"><div class="t12">The problem</div><p>The team and its AI tools build fast, but screens end up looking and working differently on every device and brand.</p></div>
+            <div class="part"><div class="t12">What we do</div><p>We build one design system that works across device screens, apps and web, written so AI tools can read it and build from it (appendix B), and keep it running with the team.</p></div>
+            <div class="part"><div class="t12">What the client gets</div><p class="medium">Fewer one-off screens and faster releases, from a small team.</p></div>
+            <div class="part users-part"><div class="t12">For the people who use it</div><p>The same task works the same way on every screen.</p></div>
+            <div class="start t12">Start with a pilot where one set of design rules (colours, type, spacing) feeds two kinds of screen, such as a machine display and a mobile app</div></div>
+          <div class="card"><div class="t12 num">04</div><h4>Quality &amp; Compliance</h4><svg class="osch" viewBox="0 0 340 112" role="img" aria-label="Schematic: a loop of review, testing with real users, fixing in the components, and checking again, against WCAG 2.2 AA."><rect class="s" x="0" y="18" width="72" height="44"/><text class="tx" x="36" y="36" text-anchor="middle">Review</text><text class="tx" x="36" y="52" text-anchor="middle">key flows</text><rect class="s" x="89" y="18" width="72" height="44"/><text class="tx" x="125" y="36" text-anchor="middle">Test with</text><text class="tx" x="125" y="52" text-anchor="middle">real users</text><rect class="p" x="178" y="18" width="72" height="44"/><text class="tk" x="214" y="36" text-anchor="middle">Fix in the</text><text class="tk" x="214" y="52" text-anchor="middle">components</text><rect class="s" x="267" y="18" width="72" height="44"/><text class="tx" x="303" y="36" text-anchor="middle">Keep</text><text class="tx" x="303" y="52" text-anchor="middle">checking</text><path class="s" d="M72 40H85M81 36l4 4-4 4M161 40H174M170 36l4 4-4 4M250 40H263M259 36l4 4-4 4"/><path class="s" d="M303 62V80H36V66M32 70l4-5 4 5"/><text class="tm" x="170" y="104" text-anchor="middle">Against WCAG 2.2 AA, the level the EU standard asks for</text></svg>
+            <div class="part"><div class="t12">The problem</div><p>EU rules now require accessible products and clear labelling of AI, and more of the product is built with AI nobody fully trusts.</p></div>
+            <div class="part"><div class="t12">What we do</div><p>We review key flows against WCAG 2.2 AA, the accessibility level the EU standard asks for, and test them with real users, fix issues where they start, in the components, and keep checking.</p></div>
+            <div class="part"><div class="t12">What the client gets</div><p class="medium">A product everyone can use, and the evidence to show it.</p></div>
+            <div class="part users-part"><div class="t12">For the people who use it</div><p>People with disabilities, and everyone else, can use the product.</p></div>
+            <div class="start t12">Start with a 1–2 week review</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g12 block" id="n3" data-beat>
+      <div class="c1-3 block-label t12 reveal">Need 03</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Rethink the product</h3>
+        <p class="prose reveal" style="margin-top:16px">New rules and AI are changing the product itself, not only how it's built. <span class="muted">Builds on: connected products under new rules; AI value needs redesigned work.</span></p>
+        <div class="cards reveal">
+          <div class="card"><div class="t12 num">05</div><h4>Connected Product Design</h4><svg class="osch" viewBox="0 0 340 112" role="img" aria-label="Schematic: device, app and service linked by one design language, with the new rules designed in."><rect class="p" x="0" y="0" width="340" height="6"/><text class="tm" x="0" y="24">One design language, with the new rules designed in</text><rect class="s" x="0" y="36" width="84" height="56"/><rect class="f" x="10" y="44" width="40" height="6"/><circle class="s" cx="58" cy="70" r="13"/><path class="s" d="M84 64H138M174 64H236"/><rect class="p" x="106" y="59" width="10" height="10"/><rect class="p" x="200" y="59" width="10" height="10"/><rect class="s" x="138" y="32" width="36" height="64" rx="4"/><path class="m" d="M146 46H166M146 54H162"/><rect class="s" x="236" y="42" width="104" height="44"/><path class="m" d="M246 54H310M246 64H296M246 74H320"/><text class="tm" x="0" y="110">Device</text><text class="tm" x="156" y="110" text-anchor="middle">App</text><text class="tm" x="340" y="110" text-anchor="end">Service</text></svg>
+            <div class="part"><div class="t12">The problem</div><p>Device, app and service feel like products from different companies, and new EU rules on data access and security now apply to all of them.</p></div>
+            <div class="part"><div class="t12">What we do</div><p>Our industrial designers, interface designers for machines and devices (HMI) and digital designers work as one team on one design language, with the new rules designed in.</p></div>
+            <div class="part"><div class="t12">What the client gets</div><p class="medium">One product that makes sense from the device to the app.</p></div>
+            <div class="part users-part"><div class="t12">For the people who use it</div><p>Clear control over their own data, on the device and in the app.</p></div>
+            <div class="start t12">Start with a review of the device-to-app experience</div></div>
+          <div class="card"><div class="t12 num">06</div><h4>AI Transition Strategy &amp; Foresight</h4><svg class="osch" viewBox="0 0 340 112" role="img" aria-label="Schematic: four steps over four to eight weeks, from researching how people work to a plan for the team and a roadmap."><path class="m" d="M27 26V18H309V26"/><text class="tm" x="168" y="12" text-anchor="middle">4–8 weeks</text><path class="s" d="M45 48H291"/><rect class="f" x="27" y="39" width="18" height="18"/><rect class="f" x="115" y="39" width="18" height="18"/><rect class="f" x="203" y="39" width="18" height="18"/><rect class="p" x="291" y="39" width="18" height="18"/><text class="tx" x="36" y="80" text-anchor="middle">Research how</text><text class="tx" x="36" y="96" text-anchor="middle">people work</text><text class="tx" x="124" y="80" text-anchor="middle">Map what AI</text><text class="tx" x="124" y="96" text-anchor="middle">changes</text><text class="tx" x="212" y="80" text-anchor="middle">Redesign key</text><text class="tx" x="212" y="96" text-anchor="middle">workflows</text><text class="tx" x="300" y="80" text-anchor="middle">Plan the team</text><text class="tx" x="300" y="96" text-anchor="middle">and roadmap</text></svg>
+            <div class="part"><div class="t12">The problem</div><p>Leaders have bought AI tools but see little return, and aren't sure what AI changes for their product, service and team.</p></div>
+            <div class="part"><div class="t12">What we do</div><p>We research how people actually work, map what AI changes in their market, redesign the key workflows, and plan the team that will deliver it.</p></div>
+            <div class="part"><div class="t12">What the client gets</div><p class="medium">Clear decisions, and a roadmap the team can act on.</p></div>
+            <div class="part users-part"><div class="t12">For the people who use it</div><p>AI features that solve real problems.</p></div>
+            <div class="start t12">Start with a 4–8 week project</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g12 reveal">
+      <div class="c4-12 statement" style="margin-top:0">
+        <div class="t12">Across all six</div>
+        <p class="t32">Sold as results or access to Nacar, not open-ended hours. And whatever a client buys, their design system gets stronger.</p>
+        <p class="prose" style="margin-top:24px">For our own people: craft stays at the centre of every role, and no one hears about this change from a client first.</p>
+        <p class="t12 muted" style="margin-top:16px">See appendix B, C and E.</p>
+      </div>
+    </div>
+
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal">What happens next</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Read it, think it through, then we meet</h3>
+        <p class="prose reveal">There is nothing to decide yet. The first step is a shared view of what is happening and what it could mean for us.</p>
+        <div class="loop reveal">
+          <div class="lp"><div class="t12 muted">01</div><div class="medium">Read the paper</div><p class="t12">The shift, what it means, and the opportunities it opens</p></div>
+          <div class="lp-ar" aria-hidden="true">→</div>
+          <div class="lp"><div class="t12 muted">02</div><div class="medium">Think it through</div><p class="t12">What Nacar will need, how we prepare, and the signals you see in your own work</p></div>
+          <div class="lp-ar" aria-hidden="true">→</div>
+          <div class="lp gate"><div class="t12">03</div><div class="medium">A workshop together</div><p class="t12">We share the shift signals and the opportunities, and work out how to prepare. Format to follow.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" data-beat>
+  <div class="wrap g12 reveal">
+    <div class="c1-3 t12">In closing</div>
+    <div class="c4-12">
+      <p class="t32" style="margin:0;max-width:30ch">Seen from outside, the shift isn't a threat to design. It moves design closer to the business, into smaller teams that carry more.</p>
+      <p class="t64" style="margin:48px 0 0">Those teams need a partner that brings what they can't hold alone. That partner can be Nacar, as long as we show up as one.</p>
+      <p class="t32 after">We stay until it works.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX ================= -->
+<section class="part" id="appendix">
+  <div class="wrap">
+    <div class="g12 opener reveal" data-beat>
+      <div class="c1-3 label t12">Appendix</div>
+      <div class="c4-12">
+        <h2 class="t64">The detail behind the opportunities</h2>
+        <div class="rules two" style="margin-top:32px">
+          <a class="r" href="#ap-a" style="text-decoration:none"><div class="n">A</div><div class="title">Offer details</div><p>Situation, buyer, what's included, format, measures and why Nacar, for each offer.</p></a>
+          <a class="r" href="#ap-b" style="text-decoration:none"><div class="n">B</div><div class="title">The system underneath</div><p>How every offer strengthens the client's design system, and what AI-ready means.</p></a>
+          <a class="r" href="#ap-c" style="text-decoration:none"><div class="n">C</div><div class="title">How clients buy it</div><p>Ways to buy, subscription tiers and service, and the path to independence.</p></a>
+          <a class="r" href="#ap-d" style="text-decoration:none"><div class="n">D</div><div class="title">What it asks of Nacar</div><p>Two layers, new roles, measurement and Bench staffing.</p></a>
+          <a class="r" href="#ap-e" style="text-decoration:none"><div class="n">E</div><div class="title">What it means for our people</div><p>The principles we propose.</p></a>
+          <a class="r" href="#ap-f" style="text-decoration:none"><div class="n">F</div><div class="title">How we use AI ourselves</div><p>First rules, and the helpers we propose.</p></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal" id="ap-a">Appendix A<br>Offer details</div>
+      <div class="c4-12">
+        <h4 class="medium reveal" style="margin:0 0 16px">How each offer starts, and what it grows into</h4><div class="grow reveal"><div class="gr gr-h t12"><span>Offer</span><span>Start with</span><span></span><span>Grows into</span></div><div class="gr"><div class="gr-o"><span class="muted">01</span> Team Transition &amp; Leadership</div><div><span class="chip start">3–6 month programme</span></div><div class="gr-ar" aria-hidden="true">→</div><div class="gr-to"><span class="chip rec">Leadership subscription</span></div></div><div class="gr"><div class="gr-o"><span class="muted">02</span> Specialist Bench</div><div><span class="chip start">One specialist project</span></div><div class="gr-ar" aria-hidden="true">→</div><div class="gr-to"><span class="chip ">Further specialist projects</span><span class="chip rec">Projects within the subscription</span></div></div><div class="gr"><div class="gr-o"><span class="muted">03</span> AI Design Ops &amp; Systems</div><div><span class="chip start">Pilot: one set of rules, two kinds of screen</span></div><div class="gr-ar" aria-hidden="true">→</div><div class="gr-to"><span class="chip ">Small, medium or large set-up</span><span class="chip rec">Subscription</span></div></div><div class="gr"><div class="gr-o"><span class="muted">04</span> Quality &amp; Compliance</div><div><span class="chip start">1–2 week review</span></div><div class="gr-ar" aria-hidden="true">→</div><div class="gr-to"><span class="chip rec">Monitoring subscription</span></div></div><div class="gr"><div class="gr-o"><span class="muted">05</span> Connected Product Design</div><div><span class="chip start">Review of the device-to-app experience</span></div><div class="gr-ar" aria-hidden="true">→</div><div class="gr-to"><span class="chip ">Strategic projects, often with offer 03</span></div></div><div class="gr"><div class="gr-o"><span class="muted">06</span> AI Transition Strategy &amp; Foresight</div><div><span class="chip start">4–8 week project</span></div><div class="gr-ar" aria-hidden="true">→</div><div class="gr-to"><span class="chip ">Often the first step into the other offers</span></div></div></div><div class="legend reveal" aria-hidden="true" style="margin:12px 0 48px"><span><i class="swatch" style="background:var(--field)"></i>Entry point</span><span><i class="swatch" style="background:var(--ink)"></i>Recurring</span><span><i class="swatch" style="background:transparent;border:1px solid var(--ink)"></i>Project</span></div>
+        <div class="detail reveal"><h4><span class="muted">01</span> Team Transition &amp; Leadership</h4><dl><dt>The situation</dt><dd>A company replaces a large external design team with three to five in-house designers working with AI, often to cut cost. Knowledge leaves with the outgoing team, roles are unclear, and quality dips while the new team finds its feet. If the outgoing team is ever ours, we would rather lead that move than lose the account, and keep the relationship through leadership, the Bench and the subscription.</dd><dt>Who buys it</dt><dd>The head of digital or product, with HR and procurement</dd><dt>Includes</dt><dd>Team design (roles, profiles, ways of working, AI tools); hiring and onboarding support; three to six months alongside the new team; then part-time design leadership, standards, reviews and coaching</dd><dt>For users</dt><dd>The product keeps improving through the change</dd><dt>Format</dt><dd>Fixed-fee programme of 3–6 months, then a leadership subscription</dd><dt>We measure</dt><dd>Time to steady delivery, quality review scores, the team's own sense of clarity, and user satisfaction with what the team ships</dd><dt>Why Nacar</dt><dd>Years of embedding designers in client teams; Nacar Academy</dd></dl></div>
+        <div class="detail reveal"><h4><span class="muted">02</span> Specialist Bench</h4><dl><dt>The situation</dt><dd>Small teams can't employ every specialist. Designers rate research, front-end coding and information architecture among the least in-demand skills, yet these decide whether an AI-built product is usable, accessible and consistent.</dd><dt>Who buys it</dt><dd>The design lead of a small in-house team, or a mature team with peaks</dd><dt>Includes</dt><dd>Senior specialists in research, accessibility, service design, design systems, design engineering, motion, content, industrial and HMI design; onboarding in days; handover notes at the end of every project</dd><dt>For users</dt><dd>Research, accessibility and service design reach the product itself</dd><dt>Format</dt><dd>Fixed-scope specialist projects, on their own or within the Design Partner subscription</dd><dt>We measure</dt><dd>Time to start, client rating of each project, reuse of what we leave behind, and whether the research changed what shipped</dd><dt>Why Nacar</dt><dd>More than 130 people across these disciplines; staffing model in appendix D</dd><dt>Risk to test</dt><dd>Designers rate research and front-end skills as low in demand, so teams may not pay for them. Willingness to pay for research and accessibility needs testing with clients.</dd></dl>
+        <div class="chart-card" style="max-width:720px;margin-top:24px">
+          <div class="chart-title">The skills designers rate least in demand are the ones a partner can bring</div>
+          <div class="chart-sub">Share of designers naming each skill as in demand (up to three)</div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="swatch" style="background:var(--accent)"></i>Specialist skills a partner can bring</span>
+            <span><i class="swatch" style="background:var(--gray-mark)"></i>Other skills</span>
+          </div>
+          <div class="chart" id="chartSkills" role="img" aria-label="Visual design 58%, using AI in the design process 54%, designing AI-driven products 37%, motion design and prototyping 29%, team leadership 27%, information architecture 19%, front-end coding 17%, qualitative research 17%, quantitative research 14%."></div>
+          <details class="data"><summary>Show data</summary>
+            <table class="t"><thead><tr><th>Skill</th><th>Share</th></tr></thead><tbody id="skillsTable"></tbody></table>
+          </details>
+          <div class="chart-src">Source: Figma, State of the Designer 2026</div>
+        </div>
+</div>
+        <div class="detail reveal"><h4><span class="muted">03</span> AI Design Ops &amp; Systems</h4><dl><dt>The situation</dt><dd>Our clients rarely have one app: appliance and machine screens, native apps, web portals and professional software, often for several brands. AI tools build fast, but screens drift apart, and the design system that should hold them together is short of people.</dd><dt>Who buys it</dt><dd>The product or digital leader</dd><dt>Includes</dt><dd>A starting kit on our design ops architecture; an AI-ready design system in the design tool and in code; one token set-up across device screens, apps and web, with a theme per brand; rules and context for AI tools; AI helpers that ask a person before acting; governance and drift checks in the client's own tools</dd><dt>For users</dt><dd>The same task looks and works the same way on every screen, device and brand</dd><dt>Format</dt><dd>A small, medium or large set-up from our August architecture, then a subscription. The first pilot proves one set of design rules feeding two kinds of screen.</dd><dt>We measure</dt><dd>Share of the interface built from system components, hard-coded values, detached components, accessibility issues that start in components, rework hours, and how long users take to complete the same task on two kinds of screen. Library analytics and code scanning are set up as part of the kit.</dd><dt>Why Nacar</dt><dd>Industrial, HMI and digital design under one roof. The architecture is on paper; we build it first on an internal project, with designers who already prototype in code and at least one new full-stack developer. AI-ready is defined in appendix B.</dd></dl></div>
+        <div class="detail reveal"><h4><span class="muted">04</span> Quality &amp; Compliance</h4><dl><dt>The situation</dt><dd>The European Accessibility Act applies, the EU standard moves to WCAG 2.2 AA, and AI features must say when people deal with AI. More of the product is built with AI that few people fully trust, and small teams rarely include an accessibility specialist.</dd><dt>Who buys it</dt><dd>The product leader, often with legal or compliance</dd><dt>Includes</dt><dd>UX review and WCAG 2.2 AA review of key flows; usability testing with real users, including people using assistive technology; a prioritised fix list and re-test; design of AI disclosure, human approval and error states; ongoing design QA of AI-built work</dd><dt>For users</dt><dd>People with disabilities, and everyone else, can use the product; people know when they deal with AI</dd><dt>Format</dt><dd>A 1–2 week review as an entry point, then a monitoring subscription</dd><dt>We measure</dt><dd>Accessibility issues per key flow before and after, usability issues fixed, task success for people using assistive technology, time to resolve</dd><dt>Why Nacar</dt><dd>New hires bring accessibility knowledge; our first step is a shared workflow and checklist, tested on an internal product</dd><dt>Please note</dt><dd>We provide conformance evidence, not legal certification. Where a formal audit is required, we work with an accredited partner. Where the client has no component library yet, the first fixes are screen by screen.</dd></dl></div>
+        <div class="detail reveal"><h4><span class="muted">05</span> Connected Product Design</h4><dl><dt>The situation</dt><dd>Makers of appliances, machinery, health devices and vehicles sell products that are part device, part app, part service. From September 2026, new connected products must give users access to their data by default, and EU security rules follow through 2027.</dd><dt>Who buys it</dt><dd>Product, engineering or the CEO of industrial and B2B companies</dd><dt>Includes</dt><dd>Experience strategy across the connected product; one design language across device, app, professional software and service; industrial, HMI and digital design in one team; the user-facing side of data access, consent and security updates; integration of new products</dd><dt>For users</dt><dd>One product that makes sense from the device to the app, with clear control over their data</dd><dt>Format</dt><dd>Strategic projects, often combined with AI Design Ops &amp; Systems</dd><dt>We measure</dt><dd>Consistency across touchpoints, task success in key flows, time to integrate a new product</dd><dt>Why Nacar</dt><dd>Industrial and digital design under one roof since 2006; long-standing clients in mobility, machinery, health and the home</dd></dl></div>
+        <div class="detail reveal"><h4><span class="muted">06</span> AI Transition Strategy &amp; Foresight</h4><dl><dt>The situation</dt><dd>Leaders have bought AI tools and run pilots but see little return. The companies that get value have redesigned how work is done around AI.</dd><dt>Who buys it</dt><dd>CEOs and leadership teams, especially in mid-sized European companies</dd><dt>Includes</dt><dd>Research into how people actually work today; foresight on how AI reshapes the market and offer; business design for AI-enabled products and services; redesign of key workflows; an operating model for the design team; a roadmap linking product, service and organisation</dd><dt>For users</dt><dd>AI features that solve real problems, rather than AI added for its own sake</dd><dt>Format</dt><dd>A strategic project of 4–8 weeks, often the first step into the other offers</dd><dt>We measure</dt><dd>Decisions taken, roadmap items started, follow-on initiatives launched, and adoption of the AI features that ship</dd><dt>Why Nacar</dt><dd>Strategy, foresight and business design next to the designers and engineers who build</dd></dl></div>
+      </div>
+    </div>
+
+    <!-- The system underneath -->
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal" id="ap-b">Appendix B<br>The system underneath</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Whatever a client buys, their design system gets stronger</h3>
+        <p class="prose reveal">For a small team, the design system is where knowledge lives when people move on, and what AI tools build from. Half of designers have already shipped AI-generated code, and that code follows the system only if the system is part of what AI tools read. Every offer works through the system and leaves it better.</p>
+        <div class="hub-h t12 muted reveal">What each offer leaves in the client's system</div><div class="hub reveal"><div class="hub-side l"><div class="hn"><div class="t12 muted">01 Team Transition &amp; Leadership</div><div>Documented standards the new team owns</div></div><div class="hn"><div class="t12 muted">02 Specialist Bench</div><div>New components, patterns and research written into the system</div></div><div class="hn"><div class="t12 muted">03 AI Design Ops &amp; Systems</div><div>The system, its tokens and its code components</div></div></div><div class="hub-core"><div class="t12">At the centre</div><div class="t32">The client's design system</div><div class="t12">Where knowledge lives when people move on, and what AI tools build from</div></div><div class="hub-side r"><div class="hn"><div class="t12 muted">04 Quality &amp; Compliance</div><div>Accessible components every new screen inherits</div></div><div class="hn"><div class="t12 muted">05 Connected Product Design</div><div>One design language across the whole product</div></div><div class="hn"><div class="t12 muted">06 AI Transition Strategy &amp; Foresight</div><div>The rules and context AI tools read</div></div></div></div>
+        <div class="table-wrap reveal" style="margin-top:48px">
+          <table class="t">
+            <thead><tr><th scope="col">Offer</th><th scope="col">How it uses the client's system</th><th scope="col">What the client keeps</th></tr></thead>
+            <tbody>
+              <tr><td>01 Team Transition &amp; Leadership</td><td>The system is the handover: decisions, components and rules stay when the outgoing team leaves</td><td>Documented standards the new team owns</td></tr>
+              <tr><td>02 Specialist Bench</td><td>Specialists work inside the system and leave their work in it</td><td>New components, patterns and research written into the system</td></tr>
+              <tr><td>03 AI Design Ops &amp; Systems</td><td>Builds and runs the system itself</td><td>The system, its tokens and its code components</td></tr>
+              <tr><td>04 Quality &amp; Compliance</td><td>Fixes accessibility in the components, not screen by screen</td><td>Accessible components every new screen inherits</td></tr>
+              <tr><td>05 Connected Product Design</td><td>One token set-up across device screens, apps and web</td><td>One design language across the whole product</td></tr>
+              <tr><td>06 AI Transition Strategy &amp; Foresight</td><td>The system is how AI tools stay on-brand at scale</td><td>The rules and context AI tools read</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="ready">
+          <div class="t12">What we mean by an AI-ready design system: five layers, from the foundation up</div>
+          <ol>
+            <li><span class="lv" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span>01</span><span>Tokens in a standard, machine-readable format, structured from base values to meaning to components</span></li>
+            <li><span class="lv" aria-hidden="true"><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span><span>02</span><span>Design-tool components linked to their code components, so AI tools build from real components</span></li>
+            <li><span class="lv" aria-hidden="true"><i class=""></i><i class=""></i><i class="on"></i><i class=""></i><i class=""></i></span><span>03</span><span>Usage rules and do's and don'ts written so AI tools can read them, not only people</span></li>
+            <li><span class="lv" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i><i class="on"></i><i class=""></i></span><span>04</span><span>A way for AI tools to look things up in the system directly. Only 12% of system teams can do this today; 57% wish they could.<span class="rm" aria-hidden="true"><span class="rm-r"><span>Can today</span><span class="mbar"><i style="width:12%"></i></span><span>12%</span></span><span class="rm-r"><span>Wish they could</span><span class="mbar"><i class="w" style="width:57%"></i></span><span>57%</span></span></span></span></li>
+            <li><span class="lv" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="on"></i></span><span>05</span><span>Automatic checks for hard-coded values, detached components, contrast and naming</span></li>
+          </ol>
+        </div>
+        <div class="note reveal">
+          <div class="t12">Compliance, built in once</div>
+          <p style="margin:0">Consent screens, data-access flows, AI labelling and accessible components become reusable parts of the system. Offers 03, 04 and 05 then meet the new EU rules once, in the system, not again on every project.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How clients buy -->
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal" id="ap-c">Appendix C<br>How clients buy it</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Sold as results or access, not open-ended hours</h3>
+        <p class="prose reveal">This answers consequence 07. Clients buy a result, or access to Nacar, rather than a person. Most relationships start small, with an audit, a specialist project or a strategy project, and grow because the next need comes: think, make, prove, and stay.</p>
+        <h4 class="medium reveal" style="margin:40px 0 16px">Three ways to buy</h4>
+        <div class="quad three reveal">
+          <div class="q-cell"><div class="q-tag t12 muted">One defined result</div><div class="t32">Projects</div><p>A fixed fee and a defined outcome, such as a team transition, a system build or a specialist study.</p></div>
+          <div class="q-cell hl"><div class="q-tag t12 muted">A run of projects</div><div class="t32">Design Partner subscription</div><p>Monthly access to Nacar across all six offers, used for agreed projects: the client buys access to a team, not a person.</p></div>
+          <div class="q-cell"><div class="q-tag t12 muted">Paid on impact</div><div class="t32">Outcome-linked fees</div><p>Added to projects wherever impact can be measured, such as accessibility conformance or system adoption.</p></div>
+        </div>
+        <p class="t12 muted reveal" style="margin-top:12px">We work by project, not by time.</p>
+        <div class="tiers reveal" style="margin-top:48px">
+          <div class="tier"><div class="t12 muted">Guardrails</div><div class="t32" style="margin-top:12px">Essential</div><div class="t12 muted" style="margin-top:8px">Keep the system healthy</div>
+            <ul><li><span>+</span>System care and quality monitoring</li><li class="off"><span>–</span>Specialist projects from the bench</li><li class="off"><span>–</span>Design QA of AI-built work</li><li class="off"><span>–</span>User validation rounds</li><li class="off"><span>–</span>Part-time design leadership</li><li class="off"><span>–</span>Strategy, connected products and AI feature work</li></ul></div>
+          <div class="tier featured"><div class="t12 muted">Build with us</div><div class="t32" style="margin-top:12px">Growth</div><div class="t12 muted" style="margin-top:8px">Grow the product with our specialists</div>
+            <ul><li><span>+</span>System care and quality monitoring</li><li><span>+</span>Specialist projects from the bench</li><li><span>+</span>Design QA of AI-built work (sample)</li><li><span>+</span>Quarterly user validation rounds</li><li class="off"><span>–</span>Part-time design leadership</li><li class="off"><span>–</span>Strategy, connected products and AI feature work</li></ul></div>
+          <div class="tier"><div class="t12 muted">Leadership included</div><div class="t32" style="margin-top:12px">Lead</div><div class="t12 muted" style="margin-top:8px">We help lead the team and the product</div>
+            <ul><li><span>+</span>System care and quality monitoring</li><li><span>+</span>Specialist projects from the bench</li><li><span>+</span>Continuous design QA of AI-built work</li><li><span>+</span>Validation rounds every 1–2 months</li><li><span>+</span>Part-time design leadership and coaching</li><li><span>+</span>Strategy, connected products and AI feature work</li></ul></div>
+        </div>
+        <p class="t12 muted reveal" style="margin-top:12px">Each tier is defined by what it includes. Annual commitments get a discount.</p>
+        <h4 class="medium reveal" style="margin:48px 0 16px">What the system subscription includes each month</h4>
+        <div class="rules two reveal">
+          <div class="r"><div class="n">01</div><div class="title">Releases</div><p>A regular release rhythm, with version notes the client's team can follow.</p></div>
+          <div class="r"><div class="n">02</div><div class="title">Contributions</div><p>A clear way for the client's designers and developers to propose changes, reviewed by us.</p></div>
+          <div class="r"><div class="n">03</div><div class="title">Retiring old parts</div><p>Old components phased out without breaking live products.</p></div>
+          <div class="r"><div class="n">04</div><div class="title">Drift audits</div><p>Regular checks that products still match the system, in design and in code.</p></div>
+          <div class="r"><div class="n">05</div><div class="title">Office hours</div><p>Time each month for the client's team to bring questions.</p></div>
+          <div class="r"><div class="n">06</div><div class="title">Adoption report</div><p>How much of the product uses the system, and what it saved.</p></div>
+          <div class="r"><div class="n">07</div><div class="title">AI context upkeep</div><p>Keeping the rules and context AI tools read up to date as the tools change.</p></div>
+        </div>
+        <h4 class="medium reveal" style="margin:48px 0 16px">Three stages to independence</h4>
+        <div class="stages reveal">
+          <div><div class="t32">Build</div><div class="share" aria-hidden="true"><span class="sn" style="width:70%"></span><span class="sc" style="width:30%"></span></div><p>We build the system with the client's team.</p></div>
+          <div><div class="t32">Run together</div><div class="share" aria-hidden="true"><span class="sn" style="width:45%"></span><span class="sc" style="width:55%"></span></div><p>We run it side by side, and the client's team learns to own it.</p></div>
+          <div><div class="t32">They run it</div><div class="share" aria-hidden="true"><span class="sn" style="width:15%"></span><span class="sc" style="width:85%"></span></div><p>The client's team runs it and we review. The subscription drops to Essential.</p></div>
+        </div>
+        <div class="legend reveal" aria-hidden="true" style="margin-top:12px"><span><i class="swatch" style="background:var(--accent)"></i>Nacar's share of the work</span><span><i class="swatch" style="background:var(--ink)"></i>The client's team</span><span class="muted">Illustrative</span></div>
+        <p class="prose reveal" style="margin-top:24px">Planning our own step back is what makes clients trust us with the first build.</p>
+        <div class="statement reveal" style="margin-bottom:0">
+          <div class="t12">The embedded model</div>
+          <p class="t32">It becomes a specialist mandate: a clear goal, a defined duration, knowledge transfer built in and an agreed exit.</p>
+          <p class="prose" style="margin-top:24px">Clients renew it because it keeps paying off, not because it's hard to leave.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- What it asks of Nacar -->
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal" id="ap-d">Appendix D<br>What it asks of Nacar</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">A studio in two layers</h3>
+        <p class="prose reveal">Selling outcomes at a fair price means senior people spend their time where clients value it most, and repeatable work runs on an engine.</p>
+        <div class="layers reveal">
+          <div class="layer-a"><div class="t12">Layer 1</div><h4>Senior layer</h4><p>Leads, strategists and specialists who sell and apply judgement: direction, review, research and the hard calls.</p></div>
+          <div class="layer-b"><div class="t12">Layer 2</div><h4>AI-assisted engine</h4><p>Our starting kit, templates and AI helpers that always ask a person before acting, doing the repeatable work quickly and consistently.</p></div>
+        </div>
+        <div class="rules two reveal" style="margin-top:64px">
+          <div class="r"><div class="n">01</div><div class="title">New roles</div><p>Design engineers, owners of design systems and AI context, an accessibility lead and coaches, mostly grown from our own people. We hire at least one full-stack developer to anchor the code side.</p></div>
+          <div class="r"><div class="n">02</div><div class="title">Academy for clients</div><p>The training that grows our designers also grows theirs.</p></div>
+          <div class="r"><div class="n">03</div><div class="title">Everything measured</div><p>We measure a baseline in the first week of every engagement and start with simple, early indicators, using library analytics and code scanning for systems work. Outcome-linked fees come only once a baseline exists.</p></div>
+        </div>
+        <h4 class="medium reveal" style="margin:48px 0 16px">Staffing the Specialist Bench</h4>
+        <div class="week reveal" role="img" aria-label="Illustrative week of a bench specialist: about four days on client projects and about one day reserved for bench projects. Unbooked bench time goes to the starting kit, the accessibility workflow and the Academy. Trusted freelancers cover peaks.">
+          <div class="t12 muted wk-l">A bench specialist's week</div>
+          <div class="wk-days"><div class="wk-a"><span class="t12">Client projects</span><span class="t12 muted">about four days</span></div><div class="wk-b"><span class="t12">Bench projects</span><span class="t12">about one day</span></div></div>
+          <div class="wk-if t12 muted">If the bench day isn't booked ↓</div>
+          <div class="wk-to"><span class="chip">Starting kit</span><span class="chip">Accessibility workflow</span><span class="chip">Academy</span></div>
+          <div class="wk-peak t12"><span class="muted">At peaks</span> <span class="chip">Trusted freelancers</span></div>
+          <div class="t12 muted" style="margin-top:12px">Illustrative</div>
+        </div>
+        <div class="note reveal">
+          <div class="t12">How we would staff it</div>
+          <p>We recommend that each bench specialist reserves about one day a week for bench projects, with a small network of trusted freelancers for peaks. Bench time that isn't booked goes to internal work: the starting kit, the accessibility workflow and the Academy, so it is never idle.</p>
+          <p style="margin:0">The trade-off: reserved time lowers billable hours until demand grows. Using gaps between projects costs less, but clients can't count on it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- People -->
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal" id="ap-e">Appendix E<br>What it means for our people</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">Craft stays at the centre of every role</h3>
+        <p class="prose reveal">This change runs through our own teams first. These are the principles we propose.</p>
+        <div class="rules two reveal">
+          <div class="r"><div class="n">01</div><div class="title">Two layers, not two classes</div><p>The senior layer and the engine describe how work is organised, not who matters. Everyone works in both.</p></div>
+          <div class="r"><div class="n">02</div><div class="title">AI takes repetition, not judgement</div><p>Repetitive production moves to the engine. Decisions, reviews and craft stay with people.</p></div>
+          <div class="r"><div class="n">03</div><div class="title">Juniors still learn by making</div><p>They grow through paired work with seniors, by reviewing and improving what AI produces, through the Academy, and by owning parts of the engine such as documentation and quality checks.</p></div>
+          <div class="r"><div class="n">04</div><div class="title">Embedded colleagues hear it from us first</div><p>Before any renewal conversation, we talk with each embedded colleague about where they fit: a specialist mandate, the Bench, systems or transition work.</p></div>
+          <div class="r"><div class="n">05</div><div class="title">New paths to grow into</div><p>Design engineer, design system owner, accessibility lead, and design lead or coach for client teams.</p></div>
+        </div>
+        <h4 class="medium reveal" style="margin:48px 0 16px">New paths to grow into</h4>
+        <div class="paths reveal">
+          <div class="pa-root"><div class="t12">Starting point</div><div class="medium">Our designers today</div></div>
+          <div class="pa-list">
+            <div class="pa"><div><div class="medium">Design engineer</div><p class="t12">For designers who already prototype in code</p></div></div>
+            <div class="pa"><div><div class="medium">Design system owner</div><p class="t12">Owns a client's system and the context AI tools read</p></div></div>
+            <div class="pa"><div><div class="medium">Accessibility lead</div><p class="t12">Owns the accessibility workflow and checklist</p></div></div>
+            <div class="pa"><div><div class="medium">Design lead or coach</div><p class="t12">Leads or coaches client teams</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our AI use -->
+    <div class="g12 block" data-beat>
+      <div class="c1-3 block-label t12 reveal" id="ap-f">Appendix F<br>How we use AI ourselves</div>
+      <div class="c4-12">
+        <h3 class="t32 reveal">The same standards we ask of clients</h3>
+        <p class="prose reveal">Nacar has no written rules yet for using AI with client work. Clients will ask, so we propose a first set.</p>
+        <div class="rules two reveal">
+          <div class="r"><div class="n">01</div><div class="title">Client data stays where the client allows</div><p>We use client material only in AI tools the client has approved, and never to train models.</p></div>
+          <div class="r"><div class="n">02</div><div class="title">A person approves what reaches the client</div><p>Every AI-assisted output is reviewed by a named person before it is shared.</p></div>
+          <div class="r"><div class="n">03</div><div class="title">We say where AI was used</div><p>Clients know which parts of the work AI helped with.</p></div>
+          <div class="r"><div class="n">04</div><div class="title">Research data is personal data</div><p>Interview recordings and participant data go into AI tools only with participants' consent and after anonymisation, in line with GDPR.</p></div>
+          <div class="r"><div class="n">05</div><div class="title">Someone owns the rules</div><p>A named owner keeps them up to date as tools and the AI Act evolve.</p></div>
+        </div>
+        <h4 class="medium reveal" style="margin:48px 0 16px">How AI-assisted work reaches a client</h4>
+        <div class="loop reveal">
+          <div class="lp"><div class="t12 muted">01</div><div class="medium">An AI helper drafts or flags</div><p class="t12">Only in tools the client has approved</p></div>
+          <div class="lp-ar" aria-hidden="true">→</div>
+          <div class="lp gate"><div class="t12">02</div><div class="medium">A named person reviews</div><p class="t12">Edits and approves before anything is shared</p></div>
+          <div class="lp-ar" aria-hidden="true">→</div>
+          <div class="lp"><div class="t12 muted">03</div><div class="medium">The work reaches the client</div><p class="t12">With a note on where AI helped</p></div>
+          <div class="lp-base t12"><span class="muted">Underneath</span> Client data never trains models. Research data goes in only with consent and after anonymisation.</div>
+        </div>
+        <h4 class="medium reveal" style="margin:48px 0 16px">The first AI helpers we propose, and who checks them</h4>
+        <div class="table-wrap reveal">
+          <table class="t">
+            <thead><tr><th scope="col">Helper</th><th scope="col">What it does</th><th scope="col">Who checks it</th></tr></thead>
+            <tbody>
+              <tr><td>Token naming check</td><td>Flags tokens that break the naming rules</td><td>The design system designer approves each fix</td></tr>
+              <tr><td>Drift detection</td><td>Compares the design files and the code, and lists differences</td><td>A designer reviews every flagged item</td></tr>
+              <tr><td>Documentation drafts</td><td>Writes a first draft of component documentation</td><td>A designer edits and approves it</td></tr>
+              <tr><td>Accessibility checks</td><td>Tests new components for contrast, focus and labels</td><td>The accessibility lead confirms the result</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap g12">
+    <div class="c1-3 t12">Sources</div>
+    <div class="c4-12 t12">
+      <ul>
+        <li>Figma, State of the Designer 2026. Survey of 906 digital designers by NewtonX, September–October 2025 (figma.com/reports)</li>
+        <li>Nacar Brand Guidelines, version 0.2, October 2026 (draft): positioning and value proposition</li>
+        <li>Internal: “Nacar Design Ops + Design System” (August 2026)</li>
+        <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025">McKinsey: The state of AI in 2025 (November 2025)</a></li>
+        <li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Use_of_artificial_intelligence_in_enterprises">Eurostat: Use of artificial intelligence in enterprises (December 2025)</a></li>
+        <li><a href="https://www.diarioestrategia.cl/texto-diario/mostrar/5700799/cada-cinco-empresas-espanolas-utiliza-ia-2025-media-ue">Europa Press, reporting Eurostat data: one in five Spanish companies uses AI (December 2025)</a></li>
+        <li><a href="https://designerfund.com/blog/ai-in-design-2026">Designer Fund and Foundation Capital: AI in Design 2026 (May 2026)</a></li>
+        <li><a href="https://stateofaidesign.com/chapters/teams">AI in Design Report 2026: Teams</a></li>
+        <li><a href="https://www.sonarsource.com/state-of-code-developer-survey-report.pdf">Sonar: State of Code Developer Survey 2026</a></li>
+        <li><a href="https://www.iconiq.com/growth/reports/state-of-ai-2026">ICONIQ: 2026 State of AI, The Builder's Economy (July 2026)</a></li>
+        <li><a href="https://www.figma.com/blog/2026-ai-report/">Figma: 2026 AI report</a></li>
+        <li><a href="https://report.zeroheight.com/">zeroheight: Design Systems Report 2026</a></li>
+        <li><a href="https://www.adweek.com/agencies/as-ai-fuels-in-housing-surge-agency-execs-take-the-entrepreneurial-path/">Adweek: As AI fuels in-housing surge (March 2026)</a></li>
+        <li><a href="https://www.theatdb.com/news/generative-ai-in-creative-production-how-brands-are-restructuring-agency-relationships-and-production-budgets">The ATDB: How brands are restructuring agency relationships (WFA research, 2026)</a></li>
+        <li><a href="https://www.forrester.com/blogs/as-ai-use-expands-b2b-marketers-become-more-selective-about-agency-spend/">Forrester: B2B marketers become more selective about agency spend (2026)</a></li>
+        <li><a href="https://www.marketing-interactive.com/omnicom-to-shutter-historic-agencies-cut-4-000-jobs-following-ipg-takeover">Marketing-Interactive, reporting the Financial Times: Omnicom cuts 4,000 jobs after IPG takeover (December 2025)</a></li>
+        <li><a href="https://www.nst.com.my/amp/business/corporate/2026/09/1523440/wpp-cutting-1000-more-jobs-year-end">Reuters, reported by NST, citing the Financial Times: WPP cutting up to 1,000 more jobs (September 2026)</a></li>
+        <li><a href="https://www.frontify.com/en/guide/the-rise-of-the-in-house-agency-insights">Frontify: The rise of the in-house agency (IHALC benchmarking)</a></li>
+        <li><a href="https://piscari.com/marketing-agency-reset-2026/">Piscari (consultancy analysis): The agency reset 2026</a></li>
+        <li><a href="https://www.deque.com/blog/en-301-549-v4-1-1-is-final-what-changed-what-it-means-and-what-you-should-do/">Deque: EN 301 549 v4.1.1 is final</a></li>
+        <li><a href="https://www.morganlewis.com/blogs/sourcingatmorganlewis/2026/08/eu-ai-acts-transparency-rules-what-went-into-effect-on-2-august">Morgan Lewis: EU AI Act transparency rules, 2 August 2026</a></li>
+        <li><a href="https://www.matheson.com/insights/the-data-act-access-by-design-requirement-comes-into-force/">Matheson: The Data Act access-by-design requirement comes into force (September 2026)</a></li>
+        <li><a href="https://www.mccannfitzgerald.com/knowledge/data-privacy-and-cyber-risk/cyber-resilience-act-reporting-obligations-apply-from-11-september-2026">McCann FitzGerald: Cyber Resilience Act reporting from 11 September 2026</a></li>
+        <li><a href="https://nacardesign.recruitee.com/o/senior-ux-designer-2">Nacar careers: company description</a></li>
+        <li><a href="https://www.interiorsfromspain.com/en/features/interviews/2023/nacar-design">Interiors from Spain: Nacar interview (2023)</a></li>
+      </ul>
+      <div class="colophon"><span>Made by Nacarians</span><span>Smaller teams, bigger partners · Internal draft v1.3 · 22 October 2026</span><span>Helena Lahora · Nacarian</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Theme toggle ---------- */
+  var root = document.documentElement;
+  var btn = document.getElementById("themeBtn");
+  function isDark() {
+    var t = root.getAttribute("data-theme");
+    if (t) return t === "dark";
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function syncBtn() { btn.textContent = isDark() ? "Light" : "Dark"; }
+  btn.addEventListener("click", function () {
+    root.setAttribute("data-theme", isDark() ? "light" : "dark");
+    syncBtn(); renderCharts();
+  });
+  syncBtn();
+
+  /* ---------- Progress + active chapter ---------- */
+  var progress = document.getElementById("progress");
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav a.link"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+    var current = -1;
+    sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 140) current = i; });
+    links.forEach(function (a, i) { if (i === current) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Reveal on scroll ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- Presenter stepping: arrow keys and clicker page keys move beat by beat ---------- */
+  var beats = Array.prototype.slice.call(document.querySelectorAll("[data-beat]"));
+  var navEl = document.querySelector(".nav");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function step(dir) {
+    var off = navEl.offsetHeight + 24;
+    var y = window.scrollY + off;
+    var tops = beats.map(function (b) { return b.getBoundingClientRect().top + window.scrollY; });
+    var target = null;
+    if (dir > 0) { for (var i = 0; i < tops.length; i++) { if (tops[i] > y + 8) { target = tops[i]; break; } } }
+    else { target = 0; for (var j = 0; j < tops.length; j++) { if (tops[j] < y - 8) target = tops[j]; } }
+    if (target === null) return;
+    window.scrollTo({ top: Math.max(0, target - off), behavior: reduce ? "auto" : "smooth" });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    var t = e.target, tag = t && t.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t.getAttribute && t.getAttribute("role") === "tab")) return;
+    if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); step(1); }
+    if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); step(-1); }
+  });
+
+  /* ---------- Tabs ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { selectTab(t); });
+    t.addEventListener("keydown", function (e) {
+      var k = e.key, n = null;
+      if (k === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+      if (k === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (k === "Home") n = tabs[0];
+      if (k === "End") n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); selectTab(n); n.focus(); }
+    });
+  });
+
+  /* ---------- Offers ---------- */
+  var offers = [
+    ["Team Transition & Leadership", "A company is moving from an external team to a small internal one, or a new team needs direction.",
+     "Team design (roles, profiles, ways of working); support with hiring; tools and AI workflows; three to six months working alongside the new team; capturing what the outgoing team knew; then part-time design leadership and craft coaching.",
+     "A small team that delivers consistently within months, with clear goals, shared standards and no loss of knowledge.",
+     "Fixed-fee programme of 3–6 months, followed by a leadership subscription.",
+     "Time to steady delivery, quality review scores, and the team's own sense of clarity and satisfaction."],
+    ["Specialist Bench", "A small team needs depth it doesn't have: a research study, an accessibility review, a service blueprint, a design engineer for a release.",
+     "Senior Nacar specialists across research, accessibility, service design, design systems, design engineering, motion, content, industrial and HMI design, onboarded to the client's context in days.",
+     "Expertise exactly when it's needed, without a hire, and knowledge that stays with the team through handover notes at the end of every sprint.",
+     "Day packs or sprints of one to six weeks, or capacity within a subscription.",
+     "Speed to start, client rating of each sprint, and how often the team reuses what we leave behind."],
+    ["AI Design Ops & Systems", "AI tools build fast, but screens look and behave differently across products, teams and brands.",
+     "A starting kit built on our design ops architecture; an AI-ready design system with tokens and components in Figma and in code; the rules and context AI tools need; AI helpers with human approval; governance and regular checks for drift.",
+     "Products that stay on-brand and consistent while the client's team and AI tools build at speed.",
+     "Build project sized to the client (one platform up to several brands and platforms), then a subscription to keep it alive.",
+     "Share of the interface built from system components, hard-coded values, rework hours."],
+    ["Quality & Compliance", "A product has to meet WCAG 2.2 AA, AI features need clear disclosure, and the team needs proof that what AI built actually works.",
+     "UX review and WCAG 2.2 AA audit of key flows; a prioritised fix list and a re-test; design of AI disclosure, human approval and error states for AI features; ongoing monitoring.",
+     "A product that works for every user, and evidence to show regulators, customers and leadership.",
+     "Audit of one to two weeks as an entry point, then a monitoring subscription.",
+     "Accessibility issues per key flow before and after, usability issues found and fixed, time to resolve."],
+    ["Connected Product Design", "Devices, apps, professional software and services feel like products from different companies.",
+     "Experience strategy across every connected product; one design language across brands and platforms; industrial, HMI and digital design working as one team; integration of new products and acquired platforms.",
+     "One coherent experience for end users and professionals, and new products that fit in from day one.",
+     "Strategic projects, often combined with AI Design Ops & Systems.",
+     "Consistency across touchpoints, task success in key flows, time to integrate a new product."],
+    ["AI Transition Strategy & Foresight", "Leaders ask what AI changes for their product, their service and their design team.",
+     "Foresight on how AI reshapes the client's market and offer; business design; an operating model for the design team; a roadmap linking product, service and organisation.",
+     "Decisions leadership can act on, and a clear path for the team that will deliver them.",
+     "Strategic project of four to eight weeks, often the first step into the other offers.",
+     "Decisions taken, roadmap items started, and follow-on initiatives launched."]
+  ];
+  var labels = ["Includes", "Outcome", "Format", "We measure"];
+  var offersEl = document.getElementById("offers");
+  if (offersEl) offers.forEach(function (o, i) {
+    var d = document.createElement("details");
+    d.className = "offer reveal in";
+    if (i === 0) d.open = true;
+    var s = document.createElement("summary");
+    var num = document.createElement("span"); num.className = "o-num"; num.textContent = "0" + (i + 1);
+    var mid = document.createElement("span");
+    var t = document.createElement("div"); t.className = "o-title"; t.textContent = o[0];
+    var m = document.createElement("div"); m.className = "o-moment"; m.textContent = o[1];
+    mid.appendChild(t); mid.appendChild(m);
+    var chev = document.createElement("span"); chev.className = "chev"; chev.setAttribute("aria-hidden", "true");
+    s.appendChild(num); s.appendChild(mid); s.appendChild(chev);
+    d.appendChild(s);
+    var body = document.createElement("div"); body.className = "o-body";
+    for (var k = 0; k < 4; k++) {
+      var cell = document.createElement("div");
+      var lab = document.createElement("div"); lab.className = "lab"; lab.textContent = labels[k];
+      var p = document.createElement("p"); p.textContent = o[k + 2];
+      cell.appendChild(lab); cell.appendChild(p); body.appendChild(cell);
+    }
+    d.appendChild(body);
+    offersEl.appendChild(d);
+  });
+
+  /* ---------- Charts ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function el(tag, attrs, parent) {
+    var n = document.createElementNS(NS, tag);
+    for (var a in attrs) n.setAttribute(a, attrs[a]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function tooltipFor(container) {
+    var tip = container.querySelector(".tooltip");
+    if (!tip) { tip = document.createElement("div"); tip.className = "tooltip"; tip.setAttribute("role", "status"); container.appendChild(tip); }
+    return tip;
+  }
+  function showTip(container, tip, value, label, x, y) {
+    tip.textContent = "";
+    var b = document.createElement("b"); b.textContent = value;
+    var s = document.createElement("span"); s.textContent = label;
+    tip.appendChild(b); tip.appendChild(s);
+    var cw = container.clientWidth;
+    tip.style.left = Math.min(Math.max(x - 60, 0), cw - 200) + "px";
+    tip.style.top = (y - 58) + "px";
+    tip.classList.add("show");
+  }
+  function hideTip(tip) { tip.classList.remove("show"); }
+  function roundedBar(g, x, y, w, h, r, fill) {
+    // square at the baseline (left), rounded data-end (right)
+    if (w <= 0) return;
+    r = Math.min(r, w, h / 2);
+    var d = "M" + x + "," + y + " H" + (x + w - r) + " Q" + (x + w) + "," + y + " " + (x + w) + "," + (y + r) +
+            " V" + (y + h - r) + " Q" + (x + w) + "," + (y + h) + " " + (x + w - r) + "," + (y + h) + " H" + x + " Z";
+    el("path", { d: d, fill: fill, "class": "mark" }, g);
+  }
+
+  function barChart(id, data, opts) {
+    var host = document.getElementById(id);
+    host.querySelectorAll("svg").forEach(function (n) { n.remove(); });
+    var W = Math.max(300, Math.round(host.clientWidth || 560));
+    var stacked = W < 480;
+    var labelW = stacked ? 0 : Math.min(opts.labelW || 210, Math.round(W * 0.45));
+    var rowH = stacked ? 48 : 34, barH = 18, top = 6, right = 52;
+    var H = top + data.length * rowH + 26;
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, "aria-hidden": "true" });
+    var plotW = W - labelW - right;
+    var max = opts.max || 100;
+    [0, 25, 50, 75, 100].filter(function (v) { return v <= max; }).forEach(function (v) {
+      var x = labelW + (v / max) * plotW;
+      el("line", { x1: x, x2: x, y1: top - 2, y2: top + data.length * rowH, "class": "gridline" }, svg);
+      var t = el("text", { x: x, y: H - 6, "text-anchor": v === 0 && stacked ? "start" : "middle", "class": "axis-label" }, svg); t.textContent = v + "%";
+    });
+    var tip = tooltipFor(host);
+    data.forEach(function (d, i) {
+      var y = top + i * rowH;
+      var g = el("g", { "class": "row", tabindex: "0", role: "img", "aria-label": d.label + ": " + d.value + "%" }, svg);
+      var lab, barY;
+      if (stacked) {
+        lab = el("text", { x: 0, y: y + 14, "class": "cat-label" + (d.em ? " em" : "") }, g);
+        barY = y + 22;
+      } else {
+        lab = el("text", { x: labelW - 12, y: y + rowH / 2 + 5, "text-anchor": "end", "class": "cat-label" + (d.em ? " em" : "") }, g);
+        barY = y + (rowH - barH) / 2;
+      }
+      lab.textContent = d.label;
+      var w = (d.value / max) * plotW;
+      roundedBar(g, labelW, barY, w, barH, 4, d.em ? css("--accent") : css("--gray-mark"));
+      var v = el("text", { x: labelW + w + 8, y: barY + barH / 2 + 5, "class": "val-label" }, g); v.textContent = d.value + "%";
+      el("rect", { x: 0, y: y, width: W, height: rowH, "class": "hit" }, g);
+      function show() {
+        var r = host.getBoundingClientRect(), sr = svg.getBoundingClientRect(), scale = sr.width / W;
+        showTip(host, tip, d.value + "%", d.label, (labelW + w) * scale + (sr.left - r.left), barY * scale + (sr.top - r.top));
+      }
+      g.addEventListener("pointermove", show); g.addEventListener("focus", show);
+      g.addEventListener("pointerleave", function () { hideTip(tip); }); g.addEventListener("blur", function () { hideTip(tip); });
+    });
+    host.insertBefore(svg, host.firstChild);
+  }
+
+  function wrap(text, maxChars) {
+    var words = String(text).split(" "), lines = [], cur = "";
+    words.forEach(function (w) {
+      if ((cur + " " + w).trim().length > maxChars && cur) { lines.push(cur); cur = w; }
+      else cur = (cur + " " + w).trim();
+    });
+    if (cur) lines.push(cur);
+    return lines;
+  }
+
+  function dumbbell(id, data) {
+    var host = document.getElementById(id);
+    host.querySelectorAll("svg").forEach(function (n) { n.remove(); });
+    var W = Math.max(300, Math.round(host.clientWidth || 560)), top = 8, left = 14, right = 30;
+    var maxChars = Math.max(18, Math.floor((W - left - right) / 7.4));
+    var rows = data.map(function (d) { return wrap(d.label, maxChars); });
+    var rowHs = rows.map(function (lines) { return 60 + lines.length * 18; });
+    var offs = []; var acc = top; rowHs.forEach(function (h) { offs.push(acc); acc += h; });
+    var H = acc + 26;
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, "aria-hidden": "true" });
+    var plotW = W - left - right;
+    var surface = css("--surface") || "#fff";
+    var card = css("--card") || surface;
+    [0, 25, 50, 75, 100].forEach(function (v) {
+      var x = left + (v / 100) * plotW;
+      el("line", { x1: x, x2: x, y1: top, y2: acc, "class": "gridline" }, svg);
+      var t = el("text", { x: x, y: H - 6, "text-anchor": "middle", "class": "axis-label" }, svg); t.textContent = v + "%";
+    });
+    var tip = tooltipFor(host);
+    data.forEach(function (d, i) {
+      var y = offs[i], rowH = rowHs[i], lines = rows[i];
+      var g = el("g", { "class": "row", tabindex: "0", role: "img", "aria-label": d.label + ": from " + d.a + "% to " + d.b + "%" }, svg);
+      var lab = el("text", { x: left, y: y + 20, "class": "cat-label em" }, g);
+      lines.forEach(function (ln, k) { var ts = el("tspan", { x: left, dy: k === 0 ? 0 : 18 }, lab); ts.textContent = ln; });
+      var cy = y + 28 + lines.length * 18;
+      var xa = left + (d.a / 100) * plotW, xb = left + (d.b / 100) * plotW;
+      el("line", { x1: xa, x2: xb, y1: cy, y2: cy, stroke: css("--accent-soft"), "stroke-width": 2, "stroke-linecap": "round", "class": "mark" }, g);
+      el("circle", { cx: xa, cy: cy, r: 7, fill: css("--accent-soft"), stroke: card, "stroke-width": 2, "class": "mark" }, g);
+      el("circle", { cx: xb, cy: cy, r: 7, fill: css("--accent-strong"), stroke: card, "stroke-width": 2, "class": "mark" }, g);
+      var ta = el("text", { x: xa, y: cy + 26, "text-anchor": "middle", "class": "axis-label" }, g); ta.textContent = d.a + "%";
+      var tb = el("text", { x: xb, y: cy + 26, "text-anchor": "middle", "class": "val-label" }, g); tb.textContent = d.b + "%";
+      el("rect", { x: 0, y: y, width: W, height: rowH, "class": "hit" }, g);
+      function show() {
+        var r = host.getBoundingClientRect(), sr = svg.getBoundingClientRect(), scale = sr.width / W;
+        showTip(host, tip, d.a + "% → " + d.b + "%", d.label, xb * scale + (sr.left - r.left), (cy - 6) * scale + (sr.top - r.top));
+      }
+      g.addEventListener("pointermove", show); g.addEventListener("focus", show);
+      g.addEventListener("pointerleave", function () { hideTip(tip); }); g.addEventListener("blur", function () { hideTip(tip); });
+    });
+    host.insertBefore(svg, host.firstChild);
+  }
+
+  var skills = [
+    { label: "Visual design / polish", value: 58 },
+    { label: "Using AI in the design process", value: 54 },
+    { label: "Designing AI-driven products", value: 37 },
+    { label: "Motion design / prototyping", value: 29 },
+    { label: "Team leadership", value: 27 },
+    { label: "Information architecture", value: 19, em: true },
+    { label: "Front-end coding", value: 17, em: true },
+    { label: "Qualitative research", value: 17, em: true },
+    { label: "Quantitative research", value: 14, em: true }
+  ];
+  var value = [
+    { label: "Use AI in at least one function", value: 88 },
+    { label: "Experiment with or scale AI agents", value: 62 },
+    { label: "Report any effect on earnings", value: 39, em: true },
+    { label: "Scale AI agents somewhere", value: 23 },
+    { label: "AI high performers", value: 6, em: true }
+  ];
+  var making = [
+    { label: "Designers using AI weekly for design work (2025 → 2026)", a: 54, b: 91 },
+    { label: "Developers' code written or assisted by AI (2023 → 2025)", a: 6, b: 42 }
+  ];
+  var spend = [
+    { label: "Digital marketing agencies", a: 51, b: 31 },
+    { label: "Content creation agencies", a: 41, b: 26 }
+  ];
+  var roles = [
+    { label: "Designers taking part in development", a: 21, b: 41 },
+    { label: "Developers doing design work", a: 44, b: 60 }
+  ];
+  function fillTable(id, rows) {
+    var tbody = document.getElementById(id);
+    rows.forEach(function (s) {
+      var tr = document.createElement("tr");
+      var a = document.createElement("td"); a.textContent = s.label;
+      var b = document.createElement("td"); b.className = "num"; b.textContent = s.value + "%";
+      tr.appendChild(a); tr.appendChild(b); tbody.appendChild(tr);
+    });
+  }
+  fillTable("skillsTable", skills);
+  fillTable("valueTable", value);
+
+  function renderCharts() {
+    barChart("chartValue", value, { max: 100, labelW: 250 });
+    dumbbell("chartMaking", making);
+    dumbbell("chartRoles", roles);
+    dumbbell("chartSpend", spend);
+    barChart("chartSkills", skills, { max: 75, labelW: 230 });
+  }
+  renderCharts();
+  var rt = null, lastW = window.innerWidth;
+  window.addEventListener("resize", function () {
+    if (window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    clearTimeout(rt); rt = setTimeout(renderCharts, 150);
+  });
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    if (mq.addEventListener) mq.addEventListener("change", function () { syncBtn(); renderCharts(); });
+  }
+})();
+</script>
+</body>
+</html>
